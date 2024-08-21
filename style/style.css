@@ -1,0 +1,256 @@
+.main-title {
+    display: block;
+    margin: 0 auto;
+    max-width: 50%;
+    text-align: center;    
+}
+.button {
+    display: block;
+    margin: 0 auto;
+    width: 240px;
+    height: 40px;
+    margin-top: 40px;
+    font-size: 23px;
+    margin-bottom: 40px;
+    background-color: rgb( 220, 164, 19);
+    border-radius: 8px;
+    font-weight: bolder;    
+}
+.button:hover {
+    background-color: rgb( 250, 194, 49);
+}
+
+.sub-page-title {
+    text-align: center;
+    
+}
+.add-new-spare-inventory-item-button {
+    font-size: 16px;
+}
+.ip-and-port-button {
+    font-size: 20px;
+}
+.submission-form {
+    display: block;
+    margin: 8px auto;
+    margin-bottom: 80px;
+    background-color: rgba(220, 220, 220, 0.4);
+    border-radius: 8px;      
+    border-style: solid;
+    border-color: rgb( 220, 164, 19);
+    padding: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    margin-left: 320px;
+    margin-right: 320px;
+}
+.submission-form label {
+    display: block;
+    font-size: 20px;
+    margin: 0px auto;
+    text-align: center;      
+    font-weight: bold;
+    margin-top: 12px;
+}
+.submission-form-top-input label{
+    
+}
+.submission-form input {
+    display: block;
+    margin: 8px auto;    
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 5px;
+    border-radius: 5px;      
+    border-style: solid;
+    border-color: rgb( 220, 164, 19);
+    border-width: 3px;    
+    font-size: 16px;
+    max-width: 90%;
+    height: 1.2em;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.submission-form textarea {
+    display: block;
+    margin: 8px auto;
+    width: 80%;
+    height: 160px;
+    padding: 16px;
+    border-radius: 8px;      
+    border-style: solid;
+    border-color: rgb( 220, 164, 19);
+    border-width: 4px;    
+    background-color: rgba(255, 255, 255, 0.6);
+    font-size: 20px;
+}
+.submit-button {
+    display: block;
+    margin: 24px auto 24px auto !important;    
+    width: 240px;
+    height: 56px !important;    
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;    
+    margin-top: 40px;    
+}
+.submit-button:hover {
+    background-color: rgb( 220, 164, 19);
+}
+.input-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.top-stuff {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.middle-stuff {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.bottom-stuff {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.westbrick-success-svg {    
+    display: block;
+    max-width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 120px;
+    height: auto;
+}
+.home-button {
+    display: block;
+    margin: 24px auto;
+    height: 40px;
+    width: 160px;
+    background-color: rgb( 220, 164, 19);
+    font-size: 20px;    
+    font-weight: bold;
+    border-radius: 8px;
+}
+.home-button:hover {
+    background-color: rgb(250, 194, 49);
+}
+.sub-menu-table {
+    margin: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.table-wrapper {
+    margin: auto;
+    /* max-width: 400px; */
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+}
+th {
+    background-color: rgb( 220, 164, 19);    
+    padding: 12px;
+    text-align: left;
+}
+td {
+    padding: 12px;
+    border: 1px solid #dddddd;
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #e0e0e0;
+}
+.garbage-can {
+    width: 20px;
+    height: 20px;
+}
+.dropdown {
+    display: block;
+    margin: 8px auto;    
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 5px;
+    border-radius: 5px;      
+    border-style: solid;
+    border-color: rgb(220, 164, 19);
+    border-width: 3px;    
+    font-size: 16px;
+    width: 220px;
+    max-width: 90%;
+    height: 35px;
+    margin-left: 5px;    
+    margin-right: 0px;
+}
+.date {
+    width: 195px;    
+}
+.it-inventory-sections {
+    display: flex;
+    justify-content: center;    
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+    margin-top: 10px;
+}
+.home-menu-button {
+    margin: 15px 15px;
+}
+.sub-title {
+    display: block;
+    margin-top: 20px auto;
+    text-align: center;
+
+}
+.password-note {
+    text-align: center;
+}
+.user-select1-dropdown {
+    width: 220px;    
+}
+.links-selection-dropdown {
+    display: none;
+}
+.link-opening-request {
+    text-align: center;
+}
+.plant-log-remarks {
+    width: 60%;
+    display: block;
+    margin: 30px auto;
+    border-style: solid;
+    border-color: black;
+    border-radius: 10px;
+    border-width: 4px;
+    padding: 20px;
+}
+.log-title {
+    text-align: center;
+}
+
+@media screen and (max-width: 1200px) {
+    .submission-form {
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+}
+@media screen and (max-width: 1000px) {
+    .main-title {
+        max-width: 100%;
+    }
+}
+@media screen and (max-width: 700px) {    
+    .submission-form {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+}
+@media screen and (max-width: 600px) {    
+
+}

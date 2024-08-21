@@ -1,0 +1,103 @@
+<!-- Made by Christopher Barber July 2024 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Westbrick </title>
+    <link rel="stylesheet" href="../../style/style.css">
+    <script src="../../script/sub-menu-script.js" defer></script>
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <a href="../"><img class="main-title" src="../../images/westbrick-plant-logs.svg" alt="Westbrick Plant Log"></a>
+    <h1 class="sub-page-title">Add New Log</h1>
+    <form class="submission-form" method="post" action="add-new-log.php" enctype="multipart/form-data"> 
+        <div class="input-group">
+            <div class="top-stuff">
+                <div>
+                    <label for="author">Author:</label>
+                    <input type="text" id="author" name="author">
+                </div>
+                
+                <div>
+                    <label for="shift">Shift:</label>
+                    <input type="text" id="shift" name="shift">
+                </div>
+
+                <div>
+                    <label for="operator1">Operator 1:</label>
+                    <input type="text" id="operator1" name="operator1">
+                </div>
+            </div>
+            <div class="middle-stuff">
+                <div>
+                    <label for="operator2">Operator 2:</label>
+                    <input type="text" id="cell-phone-number" name="cell-phone-number">
+                </div>
+
+                <div>
+                    <label for="operator3">Operator 3:</label>
+                    <input type="text" id="operator3" name="operator3">
+                </div>
+
+                <div>
+                    <label for="shift-handover-meeting">Shift Handover Meeting:</label>
+                    <input type="text" id="shift-handover-meeting" name="shift-handover-meeting"> 
+                </div>
+            </div>
+            <div class="middle-stuff">
+                <div>
+                    <label for="plant-status">Plant Status:</label>
+                    <input class="cell-phone-number" type="text" id="cell-phone-number" name="cell-phone-number">
+                </div>
+
+                <div>
+                    <label for="office-phone-number">Office Phone Number:</label>
+                    <input class="office-phone-number" type="text" id="office-phone-number" name="office-phone-number">
+                </div>
+
+                <div>
+                    <label for="extention-number">Extension Number:</label>
+                    <input class="extention-number" type="text" id="extension-number" name="extension-number"> 
+                </div>
+            </div>
+            <div class="middle-stuff">
+                <div>
+                    <label for="cell-phone-number">Cell Phone Number:</label>
+                    <input class="cell-phone-number" type="text" id="cell-phone-number" name="cell-phone-number">
+                </div>
+
+                <div>
+                    <label for="office-phone-number">Office Phone Number:</label>
+                    <input class="office-phone-number" type="text" id="office-phone-number" name="office-phone-number">
+                </div>
+
+                <div>
+                    <label for="extention-number">Extension Number:</label>
+                    <input class="extention-number" type="text" id="extension-number" name="extension-number"> 
+                </div>
+            </div>            
+            <div class="bottom-stuff">
+                <div>
+                    <label for="email">E-Mail:</label>
+                    <input class="email" type="text" id="email" name="email">
+                </div>
+
+                <div>
+                    <label for="position-title">Position Title:</label>
+                    <input class="position-title" type="text" id="position-title" name="position-title">
+                </div>
+
+                <div>
+                    <label for="remark">Remark:</label>
+                    <input class="remark" type="text" id="remark" name="remark">
+                </div>
+            </div>
+        </div>       
+                    
+        <input class="submit-button" type="submit" value="Post Item">
+    </form>    
+    <button class="button go-back-button" type="button">Go back</button>
+</body>
+</html>
