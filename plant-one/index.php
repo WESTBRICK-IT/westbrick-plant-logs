@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Westbrick IT Inventory - Users</title>
+    <title>Westbrick IT Inventory - Plant #1 Logs</title>
     <link rel="stylesheet" href="../style/style.css">
     <script src="../script/sub-menu-script.js" defer></script>    
     <link rel="icon" href="../favicon.ico" type="image/x-icon">
 </head>
 <body>
     <a href="../"><img class="main-title" src="../images/westbrick-it-inventory.svg" alt="Westbrick IT Inventory"></a>
-    <h1 class="sub-page-title">Users</h1>
+    <h1 class="sub-page-title">Plant #1 Logs</h1>
     <button class="button" onclick="window.location.href='./add-new-user/'" type="button">Add New Log</button>
     <div class="table-wrapper">
         <table class="sub-menu-table">

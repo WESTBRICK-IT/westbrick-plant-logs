@@ -1,0 +1,39 @@
+A new ELOG entry has been submitted:
+Logbook: Plant Log 2  Message ID: 5996    Entry time: 06/10/24 17:21:36 
+Author:	Pat Brown 
+Shift:	Day Shift 
+Operators:	Pat B | Chris P (Contractor) 
+Shift Handover Meeting:	Blaine H 
+Start of Shift Meeting:	 
+Plant Status:	Steady 
+Equipment Outage:	 
+Filter Change:	 
+Pigging:	 
+Recycle Pumps:	Production | Overflow 
+Production Tank Level:	3.57 
+LPG Bullet Peak Level:	149 
+LPG Bullet Peak Pressure:	426 
+Berm Water Samples Taken:	No 
+Plant Process Discussion:	Yes 
+Operational Targets:	Yes 
+Overrides or Safeties Bypassed:	N/A 
+Upcoming Activities:	Yes 
+HSE Concerns:	Yes 
+Regulatory Requirements:	Yes 
+Staff Discussion:	Yes 
+Weather & Effects on Operations:	No 
+Permit Extensions/Critical Tasks:	N/A 
+
+
+Weather was clear and warm highs of 20 
+Tank level was 3.57m and confirmed with a temp gun
+Kenspen here removing old piping overhead in the battery , They also pulled the checks from the water inj plant
+Surge here working on the positioner for the dominion line
+Surge electrican working on the C3 fan VFD
+Elite here catching where we take our samples from
+Core labs here catching weekly and monthly samples
+Vermilion ops stopped by to open their pig trap and send a pig
+Mechanics here working on the service's on K-203 and K-204
+They also replaced a bad valve on the inboard side of 4th stage of K-203
+C3 fans are both on the two speed is on slow
+ 

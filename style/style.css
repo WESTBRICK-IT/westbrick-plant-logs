@@ -47,7 +47,7 @@
 .submission-form label {
     display: block;
     font-size: 20px;
-    margin: 0px auto;
+    margin: 0px 10px;
     text-align: center;      
     font-weight: bold;
     margin-top: 12px;
@@ -67,8 +67,8 @@
     font-size: 16px;
     max-width: 90%;
     height: 1.2em;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-left: 70px;
+    margin-right: 70px;
 }
 .submission-form textarea {
     display: block;
@@ -81,7 +81,7 @@
     border-color: rgb( 220, 164, 19);
     border-width: 4px;    
     background-color: rgba(255, 255, 255, 0.6);
-    font-size: 20px;
+    font-size: 20px;    
 }
 .submit-button {
     display: block;
@@ -233,11 +233,72 @@ tr:hover {
 .log-title {
     text-align: center;
 }
+.submission-form .remark {
+    height: 500px;
+}
+.submission-form .radio-label {    
+    margin: 0;
+}
+.submission-form .radio-input {
+    margin-right: 10px;
+    margin-left: 0px;
+}
+.submission-form .radio-container {
+    min-width: 200px;
 
+}
+.submission-form .radio-container h3 {    
+    margin-top: 12px;
+}
+.submission-form .radio-option {
+    margin: 10px 6px;
+    display: inline-flex;
+    align-items: center;    
+}
+.submission-form .radio-container-label {
+    margin: 0;
+}
+.remark-div {
+    width: 100%;
+}
+.radio-option-combo {
+    display: flex;    
+    justify-content: center;
+}
+@media screen and (max-width: 1700px) {
+    .submission-form input {
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+}
+@media screen and (max-width: 1600px) {
+    .submission-form input {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+@media screen and (max-width: 1500px) {
+    .submission-form {
+        margin-left: 200px;
+        margin-right: 200px;
+    }
+}
+@media screen and (max-width: 1300px) {
+    .submission-form {
+        margin-left: 150px;
+        margin-right: 150px;
+    }
+    .submission-form input {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+}
 @media screen and (max-width: 1200px) {
     .submission-form {
         margin-left: 100px;
         margin-right: 100px;
+    }
+    .submission-form input {
     }
 }
 @media screen and (max-width: 1000px) {
