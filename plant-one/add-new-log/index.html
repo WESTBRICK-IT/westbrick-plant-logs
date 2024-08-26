@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Westbrick </title>
-    <link rel="stylesheet" href="../../style/style.css">
+    <link rel="stylesheet" href="../../style/style.css?v=1.1">
     <script src="../../script/sub-menu-script.js" defer></script>
     <link rel="icon" href="../../favicon.ico" type="image/x-icon">
 </head>
@@ -74,34 +74,55 @@
 
                 <div>
                     <label for="production-tank-level">Production Tank Level:</label>
-                    <input type="text" id="production-tank-level" name="production-tank-level"></input>
+                    <input type="number" id="production-tank-level" name="production-tank-level"></input>
                 </div>
             </div>
             <div class="middle-stuff">
                 <div>
                     <label for="lpg-bullet-peak-level">LPG Bullet Peak Level:</label>
-                    <input type="text" id="lpg-bullet-peak-level" name="lpg-bullet-peak-level"></input>
+                    <input type="number" id="lpg-bullet-peak-level" name="lpg-bullet-peak-level"></input>
                 </div>
 
                 <div>
                     <label for="lpg-bullet-peak-pressure">LPG Bullet Peak Pressure:</label>
-                    <input type="text" id="lpg-bullet-peak-pressure" name="lpg-bullet-peak-pressure"></input>
+                    <input type="number" id="lpg-bullet-peak-pressure" name="lpg-bullet-peak-pressure"></input>
                 </div>
 
-                <div>
-                    <label for="berm-water-samples-taken">Berm Water Samples Taken:</label>
-                    <input type="text" id="berm-water-samples-taken" name="berm-water-samples-taken"></input>
+                <div class="radio-container">
+                    <h3 class="radio-container-label">Berm Water Samples Taken:</h3>
+                    <div class="radio-option">
+                        <input class="radio-input" type="radio" id="berm-water-samples-taken-yes" name="berm-water-samples-taken" value="Yes">
+                        <label class="radio-label" for="berm-water-samples-taken-yes">Yes</label>
+                    </div>
+                    <div class="radio-option">
+                        <input class="radio-input" type="radio" id="berm-water-samples-taken-no" name="berm-water-samples-taken" value="No">
+                        <label class="radio-label" for="berm-water-samples-taken-no">No</label>
+                    </div>
                 </div>
             </div>
             <div class="middle-stuff">
-                <div>
-                    <label for="plant-process-discussion">Plant Process Discussion:</label>
-                    <input type="text" id="plant-process-discussion" name="plant-process-discussion"></input>
+                <div class="radio-container">
+                    <h3 class="radio-container-label">Plant Process Discussion:</h3>
+                    <div class="radio-option">
+                        <input class="radio-input" type="radio" id="plant-process-discussion-yes" name="plant-process-discussion" value="Yes">
+                        <label class="radio-label" for="plant-process-discussion-yes">Yes</label>
+                    </div>
+                    <div class="radio-option">
+                        <input class="radio-input" type="radio" id="plant-process-discussion-no" name="plant-process-discussion" value="No">
+                        <label class="radio-label" for="plant-process-discussion-no">No</label>
+                    </div>
                 </div>
 
-                <div>
-                    <label for="operational-targets">Operational Targets:</label>
-                    <input type="text" id="operational-targets" name="operational-targets"></input>
+                <div class="radio-container">
+                    <h3 class="radio-container-label">Operational Targets:</h3>
+                    <div class="radio-option">
+                        <input class="radio-input" type="radio" id="operational-targets-yes" name="operational-targets" value="Yes">
+                        <label class="radio-label" for="operational-targets-yes">Yes</label>
+                    </div>
+                    <div class="radio-option">
+                        <input class="radio-input" type="radio" id="operational-targets-no" name="operational-targets" value="No">
+                        <label class="radio-label" for="operational-targets-no">No</label>
+                    </div>
                 </div>
 
                 <div>
@@ -109,25 +130,40 @@
                     <input type="text" id="over-rides-or-safeties-bypassed" name="over-rides-or-safeties-bypassed"></input>
                 </div>
             </div>
-            <div class="middle-stuff">
-                <div>
-                    <label for="upcoming-activities">Upcoming Activities:</label>
-                    <input type="text" id="upcoming-activities" name="upcoming-activities"></input>
+            <div class="middle-stuff">                
+
+                <div class="radio-container">
+                    <h3 class="radio-container-label">Upcoming Activities:</h3>
+                    <div class="radio-option">
+                        <input class="radio-input" type="radio" id="upcoming-activities-yes" name="upcoming-activities" value="Yes">
+                        <label class="radio-label" for="upcoming-activities-yes">Yes</label>
+                    </div>
+                    <div class="radio-option">
+                        <input class="radio-input" type="radio" id="upcoming-activities-no" name="upcoming-activities" value="No">
+                        <label class="radio-label" for="upcoming-activities-no">No</label>
+                    </div>
                 </div>
 
-                <div>
-                    <label for="hse-concerns">HSE Concerns:</label>
-                    <input type="text" id="hse-concerns" name="hse-concerns"></input>
+                <div class="radio-container">
+                    <h3 class="radio-container-label">HSE Concerns:</h3>
+                    <div class="radio-option">
+                        <input class="radio-input" type="radio" id="hse-concerns-yes" name="hse-concerns" value="Yes">
+                        <label class="radio-label" for="hse-concerns-yes">Yes</label>
+                    </div>
+                    <div class="radio-option">
+                        <input class="radio-input" type="radio" id="hse-concerns-no" name="hse-concerns" value="No">
+                        <label class="radio-label" for="hse-concerns-no">No</label>
+                    </div>
                 </div>
 
                 <div class="radio-container">
                     <h3 class="radio-container-label">Regulatory Requirements:</h3>
                     <div class="radio-option">
-                        <input class="radio-input" type="radio" id="regulatory-requirements-yes" name="regulatory-requirements-yes" value="Yes">
+                        <input class="radio-input" type="radio" id="regulatory-requirements-yes" name="regulatory-requirements" value="Yes">
                         <label class="radio-label" for="regulatory-requirements-yes">Yes</label>
                     </div>
                     <div class="radio-option">
-                        <input class="radio-input" type="radio" id="regulatory-requirements-no" name="regulatory-requirements-no" value="No">
+                        <input class="radio-input" type="radio" id="regulatory-requirements-no" name="regulatory-requirements" value="No">
                         <label class="radio-label" for="regulatory-requirements-no">No</label>
                     </div>
                 </div>

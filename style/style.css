@@ -245,7 +245,8 @@ tr:hover {
 }
 .submission-form .radio-container {
     min-width: 200px;
-
+    margin-right: 10px;
+    margin-left: 10px;
 }
 .submission-form .radio-container h3 {    
     margin-top: 12px;
