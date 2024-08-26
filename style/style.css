@@ -247,6 +247,13 @@ tr:hover {
     min-width: 200px;
     margin-right: 10px;
     margin-left: 10px;
+    border-style: solid;
+    border-color: rgb( 220, 164, 19);
+    border-radius: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin: 10px;
+    text-align: center;
 }
 .submission-form .radio-container h3 {    
     margin-top: 12px;
@@ -264,7 +271,7 @@ tr:hover {
 }
 .radio-option-combo {
     display: flex;    
-    justify-content: center;
+    justify-content: center;     
 }
 @media screen and (max-width: 1700px) {
     .submission-form input {
