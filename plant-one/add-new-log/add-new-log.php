@@ -27,7 +27,7 @@
         $servername = "localhost";
         $username = "cbarber";
         $password = "!!!Dr0w554p!!!";
-        $dbname = "IT_Inventory_DB";
+        $dbname = "WestbrickPlantLogDB";
         
         $conn = new mysqli($servername, $username, $password, $dbname);
         
@@ -35,12 +35,31 @@
             die("Connection failed: " . $conn->connect_error);
         }    
 
-        $locationName = $_POST['location-name'];
-        $cityOrTown = $_POST['city-or-town'];
-        $roomNumber = $_POST['room-number'];
-        $lsdCoordinates = $_POST['lsd-coordinates'];
-        $latitude = $_POST['latitude'];
-        $longitude = $_POST['longitude'];
+        $author = $_POST['author'];
+        $shift = $_POST['shift'];
+        $shiftHandoverMeeting = $_POST['shift-handover-meeting'];
+        $operator1 = $_POST['operator1'];
+        $operator2 = $_POST['operator2'];
+        $operator3 = $_POST['operator3'];
+        $plantStatus = $_POST['plant-status'];
+        $equipmentOutage = $_POST['equipment-outage'];
+        $filterChange = $_POST['filter-change'];
+        $pigging = $_POST['pigging'];
+        $recyclePumps = $_POST['recycle-pumps'];
+        $productionTankLevel = $_POST['production-tank-level'];
+        $lPG_BulletPeakLevel = $_POST['lpg-bullet-peak-level'];
+        $lPG_BulletPeakPressure = $_POST['lpg-bullet-peak-pressure'];
+        $bermWaterSamplesTaken = $_POST['berm-water-samples-taken'];
+        $plantProcessDiscussion = $_POST['plant-process-discussion'];
+        $operationalTargets = $_POST['operational-targets'];
+        $overRidesOrSafetiesBypassed = $_POST['over-rides-or-safeties-bypassed'];
+        $upcomingActivities = $_POST['upcoming-activities'];
+        $hSE_Concerns = $_POST['hse-concerns'];
+        $regulatoryRequirements = $_POST['regulatory-requirements'];
+        $staffDiscussion = $_POST['staff-discussion'];
+        $weatherAndEffectsOnOperations = $_POST['weather-and-effects-on-operations'];
+        $permitExtensionsCriticalTasks = $_POST['permit-extensions-critical-tasks'];
+        $remark = $_POST['remark'];        
         $date = date('Y-m-d');        
         date_default_timezone_set('America/Denver'); 
         $time = date('H:i:s', time());
@@ -48,17 +67,20 @@
             $newString = str_replace("'", '`', $string); 
             return $newString; 
         }    
-        $locationName = convertApostrophe($locationName);
-        $cityOrTown = convertApostrophe($cityOrTown);
-        $roomNumber = convertApostrophe($roomNumber);
-        $lsdCoordinates = convertApostrophe($lsdCoordinates);        
         
-        $sql = "INSERT INTO locations (location_name, city_town, room_number, lsd_coordinate, latitude, longitude, date, time) VALUES ('$locationName', '$cityOrTown', '$roomNumber', '$lsdCoordinates', '$latitude', '$longitude', '$date', '$time')";
+        $remark = convertApostrophe($remark);
+        $author = convertApostrophe($author);
+        $shift = convertApostrophe($shift);
+        $shiftHandoverMeeting = convertApostrophe($shiftHandoverMeeting);
+        // finishing this later
+
+        
+        $sql = "INSERT INTO westbrick_plant_log1 (author, shift, operator1, operator2, operator3, shift_handover_meeting, plant_status, equipment_outage, filter_change, pigging, recycle_pumps, production_tank_level, lpg_bullet_peak_level, lpg_bullet_peak_pressure, berm_water_samples_taken, plant_process_discussion, operational_targets, overrides_or_safeties_bypassed, upcoming_activities, hse_concerns, regulatory_requirements, staff_discussion, weather_and_effects_on_operations, permit_extensions_critical_tasks, remark, time, date) VALUES ('$author', '$shift', '$operator1', '$operator2', '$operator3', '$shiftHandoverMeeting', '$plantStatus', '$equipmentOutage', '$filterChange', '$pigging', '$recyclePumps', '$productionTankLevel', '$lPG_BulletPeakLevel', '$lPG_BulletPeakPressure', '$bermWaterSamplesTaken', '$plantProcessDiscussion', '$operationalTargets', '$overRidesOrSafetiesBypassed', '$upcomingActivities', '$hSE_Concerns', '$regulatoryRequirements', '$staffDiscussion', '$weatherAndEffectsOnOperations', '$permitExtensionsCriticalTasks', '$remark', '$date', '$time')";
         
         if ($conn->query($sql) === TRUE) {
             // echo "<h1>Article $title submitted successfully! Redirecting to articles page in 5 seconds.</h1>";
             echo "<div class='westbrick-success-svg-container'>";
-            echo    "<img class='westbrick-success-svg' src='../../images/location-submitted-successfully.svg' alt='WESTBRICK SUCCESS SVG'>";
+            echo    "<img class='westbrick-success-svg' src='../../images/plant-log-submitted-successfully.svg' alt='WESTBRICK SUCCESS SVG'>";
             echo    "<button class='home-button' type='button' onclick='window.location.href=`../`;'>Home</button>";
             echo "</div>";
             // echo "<br><h1>File name: $image" . "File tmp name: $image_tmp" . "</h1>";
