@@ -1,3 +1,11 @@
+html{
+    /* background-color: rgba(220, 164, 19, 0.2); */
+    background-image: url(../images/WESTBRICK-wide-transparent.svg);    	
+	background-size: 100%;
+	background-repeat: no-repeat;		
+	background-position: center;	
+	background-attachment: fixed;
+}
 .main-title {
     display: block;
     margin: 0 auto;
@@ -145,7 +153,7 @@
 .table-wrapper {
     margin: auto;
     /* max-width: 400px; */
-    background-color: white;
+    /* background-color: rgba(255, 255, 255, 0.8); */
     border-radius: 8px;
     overflow: hidden;
     /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
@@ -273,6 +281,16 @@ tr:hover {
     display: flex;    
     justify-content: center;     
 }
+.plant-log {
+    display: block;
+    margin: 20px auto;
+    border-style: solid;
+    border-color: rgb( 220, 164, 19);
+    border-radius: 10px;
+    max-width: 70%;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.6);
+}
 @media screen and (max-width: 1700px) {
     .submission-form input {
         margin-left: 40px;
@@ -292,6 +310,9 @@ tr:hover {
     }
 }
 @media screen and (max-width: 1300px) {
+    .plant-log {
+        max-width: 90%;
+    }
     .submission-form {
         margin-left: 150px;
         margin-right: 150px;
@@ -310,6 +331,9 @@ tr:hover {
     }
 }
 @media screen and (max-width: 1000px) {
+    .plant-log {
+        max-width: 100%;
+    }
     .main-title {
         max-width: 100%;
     }
