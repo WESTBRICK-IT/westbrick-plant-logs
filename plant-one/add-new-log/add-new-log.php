@@ -38,6 +38,7 @@
         $author = $_POST['author'];
         $shift = $_POST['shift'];
         $shiftHandoverMeeting = $_POST['shift-handover-meeting'];
+        $startOfShiftMeeting = $_POST['start-of-shift-meeting'];
         $operator1 = $_POST['operator1'];
         $operator2 = $_POST['operator2'];
         $operator3 = $_POST['operator3'];
@@ -72,10 +73,9 @@
         $author = convertApostrophe($author);
         $shift = convertApostrophe($shift);
         $shiftHandoverMeeting = convertApostrophe($shiftHandoverMeeting);
-        // finishing this later
-        echo "<h1>$weatherAndEffectsOnOperations</h1>";
+        // finishing this later        
         
-        $sql = "INSERT INTO westbrick_plant_log1 (author, shift, operator1, operator2, operator3, shift_handover_meeting, plant_status, equipment_outage, filter_change, pigging, recycle_pumps, production_tank_level, lpg_bullet_peak_level, lpg_bullet_peak_pressure, berm_water_samples_taken, plant_process_discussion, operational_targets, overrides_or_safeties_bypassed, upcoming_activities, hse_concerns, regulatory_requirements, staff_discussion, weather_and_effects_on_operations, permit_extensions_critical_tasks, remark, date, time) VALUES ('$author', '$shift', '$operator1', '$operator2', '$operator3', '$shiftHandoverMeeting', '$plantStatus', '$equipmentOutage', '$filterChange', '$pigging', '$recyclePumps', '$productionTankLevel', '$lPG_BulletPeakLevel', '$lPG_BulletPeakPressure', '$bermWaterSamplesTaken', '$plantProcessDiscussion', '$operationalTargets', '$overRidesOrSafetiesBypassed', '$upcomingActivities', '$hSE_Concerns', '$regulatoryRequirements', '$staffDiscussion', '$weatherAndEffectsOnOperations', '$permitExtensionsCriticalTasks', '$remark', '$date', '$time')";
+        $sql = "INSERT INTO westbrick_plant_log1 (author, shift, operator1, operator2, operator3, shift_handover_meeting, plant_status, equipment_outage, filter_change, pigging, recycle_pumps, production_tank_level, lpg_bullet_peak_level, lpg_bullet_peak_pressure, berm_water_samples_taken, plant_process_discussion, operational_targets, overrides_or_safeties_bypassed, upcoming_activities, hse_concerns, regulatory_requirements, staff_discussion, weather_and_effects_on_operations, permit_extensions_critical_tasks, remark, date, time, start_of_shift_meeting) VALUES ('$author', '$shift', '$operator1', '$operator2', '$operator3', '$shiftHandoverMeeting', '$plantStatus', '$equipmentOutage', '$filterChange', '$pigging', '$recyclePumps', '$productionTankLevel', '$lPG_BulletPeakLevel', '$lPG_BulletPeakPressure', '$bermWaterSamplesTaken', '$plantProcessDiscussion', '$operationalTargets', '$overRidesOrSafetiesBypassed', '$upcomingActivities', '$hSE_Concerns', '$regulatoryRequirements', '$staffDiscussion', '$weatherAndEffectsOnOperations', '$permitExtensionsCriticalTasks', '$remark', '$date', '$time', '$startOfShiftMeeting')";
         
         if ($conn->query($sql) === TRUE) {
             // echo "<h1>Article $title submitted successfully! Redirecting to articles page in 5 seconds.</h1>";

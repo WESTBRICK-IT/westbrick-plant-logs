@@ -14,7 +14,7 @@
     <h1 class="sub-page-title">Plant One</h1>
     <button class="button" onclick="window.location.href='./add-new-log/'" type="button">Add New Log</button>
 
-    <div class="plant-log">
+    
     <?php
         $allowedIPs = array('206.174.198.58', '206.174.198.59', '50.99.132.206'); // Define the list of allowed IP addresses
 
@@ -30,11 +30,20 @@
             return $newString; 
         }
         // Connect to the database
-        $conn = mysqli_connect("localhost", "cbarber", "!!!Dr0w554p!!!", "IT_Inventory_DB");
+        $conn = mysqli_connect("localhost", "cbarber", "!!!Dr0w554p!!!", "WestbrickPlantLogDB");
 
         // Check connection
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
+        }
+
+        function booleanToYesNo($boolean) {
+            if($boolean == 1) {
+                $boolean = "Yes";
+            } else if($boolean == 0) {
+                $boolean = "No";
+            }
+            return $boolean;
         }
 
         $query = "SELECT * FROM `westbrick_plant_log1` ORDER BY `id` DESC, `author` DESC";
@@ -72,7 +81,16 @@
                 $date = $row['date'];
                 $time = $row['time'];
 
-                
+                $bermWaterSamplesTaken = booleanToYesNo($bermWaterSamplesTaken);
+                $plantProcessDiscussion = booleanToYesNo($plantProcessDiscussion);
+                $operationalTargets = booleanToYesNo($operationalTargets);
+                $upcomingActivities = booleanToYesNo($upcomingActivities);
+                $hSE_Concerns = booleanToYesNo($hSE_Concerns);
+                $regulatoryRequirements = booleanToYesNo($regulatoryRequirements);
+                $staffDiscussion = booleanToYesNo($staffDiscussion);
+                $weatherAndEffectsOnOperations = booleanToYesNo($weatherAndEffectsOnOperations);
+
+                echo    "<div class='plant-log'>";
                 echo    "   <h1 class='log-title'>Plant Log #$id</h1>";
                 echo    "   <div class='table-wrapper'>";
                 echo    "       <table class='sub-menu-table'>";
@@ -141,13 +159,13 @@
                 echo    "           </thead>";
                 echo    "           <tbody>";
                 echo    "               <tr>";
-                echo    "                   <th>$lPG_BulletPeakLevel</th>";
-                echo    "                   <th>$lPG_BulletPeakPressure</th>";
-                echo    "                   <th>$bermWaterSamplesTaken</th>";
-                echo    "                   <th>$plantProcessDiscussion</th>";
-                echo    "                   <th>$operationalTargets</th>";
-                echo    "                   <th>$recyclePumps</th>";
-                echo    "                   <th>$productionTankLevel</th>";
+                echo    "                   <td>$lPG_BulletPeakLevel</td>";
+                echo    "                   <td>$lPG_BulletPeakPressure</td>";
+                echo    "                   <td>$bermWaterSamplesTaken</td>";
+                echo    "                   <td>$plantProcessDiscussion</td>";
+                echo    "                   <td>$operationalTargets</td>";
+                echo    "                   <td>$recyclePumps</td>";
+                echo    "                   <td>$productionTankLevel</td>";
                 echo    "               </tr>";
                 echo    "           </tbody>";
                 echo    "       </table>";
@@ -164,20 +182,20 @@
                 echo    "           </thead>";
                 echo    "           <tbody>";
                 echo    "               <tr>";
-                echo    "                   <th>$upcomingActivities</th>";
-                echo    "                   <th>$hSE_Concerns</th>";
-                echo    "                   <th>$regulatoryRequirements</th>";
-                echo    "                   <th>$staffDiscussion</th>";
-                echo    "                   <th>$weatherAndEffectsOnOperations</th>";
-                echo    "                   <th>$permitExtensionsCriticalTasks</th>";
+                echo    "                   <td>$upcomingActivities</td>";
+                echo    "                   <td>$hSE_Concerns</td>";
+                echo    "                   <td>$regulatoryRequirements</td>";
+                echo    "                   <td>$staffDiscussion</td>";
+                echo    "                   <td>$weatherAndEffectsOnOperations</td>";
+                echo    "                   <td>$permitExtensionsCriticalTasks</td>";
                 echo    "               </tr>";
                 echo    "           </tbody>";
                 echo    "       </table>";
                 echo    "       <p class='plant-log-remarks'>";
                 echo    "           $remark";
-                echo    "       </p>";
-                echo    "       <td><img class='garbage-can garbage-can$id links-garbage-can links-garbage-can$id' src='../images/garbage-can.svg' alt='links Garbage Can $id'></td>";                
-                echo    "   </div>";                
+                echo    "       </p>";                
+                echo    "   </div>"; 
+                echo    "</div>";
             }
         }
 
