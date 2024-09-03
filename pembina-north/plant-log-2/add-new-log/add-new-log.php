@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Westbrick IT Plant Logs - Add New Log</title>
-    <link rel="stylesheet" href="../../style/style.css">
-    <script src="../../script/sub-menu-script.js" defer></script>
-    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <title>Westbrick IT Plant Logs - Pembina North - Plant Log 2 - Add New Log</title>
+    <link rel="stylesheet" href="../../../style/style.css">
+    <script src="../../../script/sub-menu-script.js" defer></script>
+    <link rel="icon" href="../../../favicon.ico" type="image/x-icon">
 </head>
 <body>
     <?php
@@ -80,7 +80,7 @@
         if ($conn->query($sql) === TRUE) {
             // echo "<h1>Article $title submitted successfully! Redirecting to articles page in 5 seconds.</h1>";
             echo "<div class='westbrick-success-svg-container'>";
-            echo    "<img class='westbrick-success-svg' src='../../images/plant-log-submitted-successfully.svg' alt='WESTBRICK SUCCESS SVG'>";
+            echo    "<img class='westbrick-success-svg' src='../../../images/plant-log-submitted-successfully.svg' alt='WESTBRICK SUCCESS SVG'>";
             echo    "<button class='home-button' type='button' onclick='window.location.href=`../`;'>Home</button>";
             echo "</div>";
             // echo "<br><h1>File name: $image" . "File tmp name: $image_tmp" . "</h1>";
@@ -91,7 +91,7 @@
         } else {
             echo "<div class='westbrick-success-svg-container'>";
             echo    "Error: " . $sql . "<br>" . $conn->error;
-            echo    "<button class='home-button' type='button' onclick='window.location.href=`index.html`;'>Compose</button>";
+            echo    "<button class='home-button' type='button' onclick='window.location.href=`index.html`;'>Index</button>";
             echo "</div>";
         }
         $conn->close();

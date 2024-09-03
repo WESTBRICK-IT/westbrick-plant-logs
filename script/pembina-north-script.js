@@ -17,7 +17,7 @@ const plantLog2ButtonClick = function() {
     window.location.href = "./plant-log-2/";
 }
 const pLC_Changes2ButtonClick = function() {
-    window.location.href = "./plc-changes-2-button/";
+    window.location.href = "./plc-changes-2/";
 }
 const safetyBypassLog2ButtonClick = function() {
     window.location.href = "./safety-bypass-log-2/";

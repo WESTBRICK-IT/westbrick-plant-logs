@@ -308,6 +308,18 @@ tr:hover {
 .pembina-north-button {
     font-size: 20px;
 }
+.sub-menu-table {
+    width: 100%;
+    max-width: 100%;   
+}
+.table-wrapper {
+    
+}
+.thead {
+    flex-wrap: wrap;
+    max-width: 100%;
+}
+
 @media screen and (max-width: 1700px) {
     .submission-form input {
         margin-left: 40px;
@@ -359,6 +371,9 @@ tr:hover {
     }
     .main-title {
         max-width: 100%;
+    }
+    .plant-log-remarks {
+        width: 80%;
     }
 }
 @media screen and (max-width: 700px) {    

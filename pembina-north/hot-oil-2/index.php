@@ -37,58 +37,41 @@
             die("Connection failed: " . mysqli_connect_error());
         }
 
-        function booleanToYesNo($boolean) {
+        function booleanToNightDay($boolean) {
             if($boolean == 1) {
-                $boolean = "Yes";
+                $boolean = "Day";
             } else if($boolean == 0) {
-                $boolean = "No";
+                $boolean = "Night";
             }
             return $boolean;
         }
 
-        $query = "SELECT * FROM `westbrick_plant_log1` ORDER BY `id` DESC, `author` DESC";
+        $query = "SELECT * FROM `hot_oil2` ORDER BY `id` DESC, `author` DESC";
         $result = mysqli_query($conn, $query);
         if (mysqli_num_rows($result) > 0) {                                            
             while($row = mysqli_fetch_assoc($result)) {
                                 
                 $id = $row['id'];                
-                $author = $row['author'];
+                $author = $row['author'];                
+                $flow = $row['flow'];
+                $inletTemp = $row['inlet_temperature'];
+                $outletTemp =  $row['outlet_temperature'];
+                $pumpPressure = $row['pump_pressure'];
+                $surgeTankPressure = $row['surge_tank_pressure'];
+                $surgeTankLevel = $row['surge_tank_level'];
+                $fuelGasPressure = $row['fuel_gas_pressure'];
+                $stackTemperature = $row['stack_temperature'];
+                $airTemperature = $row['air_temperature'];
+                $flameCondition = $row['flame_condition'];
                 $shift = $row['shift'];
-                $operator1 = $row['operator1'];
-                $operator2 = $row['operator2'];
-                $operator3 = $row['operator3'];
-                $shiftHandoverMeeting = $row['shift_handover_meeting'];
-                $startOfShiftMeeting = $row['start_of_shift_meeting'];
-                $plantStatus = $row['plant_status'];
-                $equipmentOutage = $row['equipment_outage'];
-                $filterChange = $row['filter_change'];
-                $pigging = $row['pigging'];
-                $recyclePumps = $row['recycle_pumps'];
-                $productionTankLevel = $row['production_tank_level'];
-                $lPG_BulletPeakLevel = $row['lpg_bullet_peak_level'];
-                $lPG_BulletPeakPressure = $row['lpg_bullet_peak_pressure'];
-                $bermWaterSamplesTaken = $row['berm_water_samples_taken'];
-                $plantProcessDiscussion = $row['plant_process_discussion'];
-                $operationalTargets = $row['operational_targets'];
-                $overRidesOrSafetiesBypassed = $row['overrides'];
-                $upcomingActivities = $row['upcoming_activities'];
-                $hSE_Concerns = $row['hse_concerns'];
-                $regulatoryRequirements = $row['regulatory_requirements'];
-                $staffDiscussion = $row['staff_discussion'];
-                $weatherAndEffectsOnOperations = $row['weather_and_effects_on_operations'];
-                $permitExtensionsCriticalTasks = $row['permit_extensions_critical_tasks'];
+                $month = $row['month'];
+                $day = $row['day'];
+                $year = $row['year'];
                 $remark = $row['remark'];
                 $date = $row['date'];
                 $time = $row['time'];
 
-                $bermWaterSamplesTaken = booleanToYesNo($bermWaterSamplesTaken);
-                $plantProcessDiscussion = booleanToYesNo($plantProcessDiscussion);
-                $operationalTargets = booleanToYesNo($operationalTargets);
-                $upcomingActivities = booleanToYesNo($upcomingActivities);
-                $hSE_Concerns = booleanToYesNo($hSE_Concerns);
-                $regulatoryRequirements = booleanToYesNo($regulatoryRequirements);
-                $staffDiscussion = booleanToYesNo($staffDiscussion);
-                $weatherAndEffectsOnOperations = booleanToYesNo($weatherAndEffectsOnOperations);
+                $shift = booleanToYesNo($shift);
 
                 echo    "<div class='plant-log'>";
                 echo    "   <h1 class='log-title'>Plant Log #$id</h1>";

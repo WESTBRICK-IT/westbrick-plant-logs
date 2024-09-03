@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Westbrick Plant Logs - Plant One</title>
-    <link rel="stylesheet" href="../style/style.css">
-    <script src="../script/sub-menu-script.js" defer></script>    
-    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <title>Westbrick Plant Logs - Pembina North - Plant Log 2</title>
+    <link rel="stylesheet" href="../../style/style.css">
+    <script src="../../script/sub-menu-script.js" defer></script>    
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <a href="../"><img class="main-title" src="../images/westbrick-plant-logs.svg" alt="Westbrick Plant Logs"></a>
-    <h1 class="sub-page-title">Plant One</h1>
+    <a href="../"><img class="main-title" src="../../images/westbrick-plant-logs.svg" alt="Westbrick Plant Logs"></a>
+    <h1 class="sub-page-title">Plant Log 2</h1>
     <button class="button" onclick="window.location.href='./add-new-log/'" type="button">Add New Log</button>
 
     
