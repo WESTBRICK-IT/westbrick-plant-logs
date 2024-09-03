@@ -1,7 +1,7 @@
-const plantOneButton = document.querySelector(".plant-one-button");
+const pembinaNorthButton = document.querySelector(".pembina-north-button");
 
-const plantOneButtonClick = function() {
-    window.location.href = "./plant-one/";
+const pembinaNorthButtonClick = function() {
+    window.location.href = "./pembina-north/";
 }
 
-plantOneButton.addEventListener("click", plantOneButtonClick);
+pembinaNorthButton.addEventListener("click", pembinaNorthButtonClick);

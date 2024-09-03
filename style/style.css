@@ -295,6 +295,19 @@ tr:hover {
     height: 24px;   
     width: 24px;
 }
+.sections-section {
+    display: block;
+    margin: 20px auto;
+    border-style: solid;
+    border-color: rgb( 220, 164, 19);
+    border-radius: 10px;
+    max-width: 70%;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.6);
+}
+.pembina-north-button {
+    font-size: 20px;
+}
 @media screen and (max-width: 1700px) {
     .submission-form input {
         margin-left: 40px;
@@ -317,6 +330,9 @@ tr:hover {
     .plant-log {
         max-width: 90%;
     }
+    .sections-section {
+        max-width: 90%;
+    }
     .submission-form {
         margin-left: 150px;
         margin-right: 150px;
@@ -336,6 +352,9 @@ tr:hover {
 }
 @media screen and (max-width: 1000px) {
     .plant-log {
+        max-width: 100%;
+    }
+    .sections-section {
         max-width: 100%;
     }
     .main-title {
