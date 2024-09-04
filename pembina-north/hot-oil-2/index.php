@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Westbrick Plant Logs - Plant One</title>
-    <link rel="stylesheet" href="../style/style.css">
-    <script src="../script/sub-menu-script.js" defer></script>    
-    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../style/style.css">
+    <script src="../../script/sub-menu-script.js" defer></script>    
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <a href="../"><img class="main-title" src="../images/westbrick-plant-logs.svg" alt="Westbrick Plant Logs"></a>
-    <h1 class="sub-page-title">Plant One</h1>
+    <a href="../"><img class="main-title" src="../../images/westbrick-plant-logs.svg" alt="Westbrick Plant Logs"></a>
+    <h1 class="sub-page-title">Pembina North - Hot Oil 2</h1>
     <button class="button" onclick="window.location.href='./add-new-log/'" type="button">Add New Log</button>
 
     
@@ -35,6 +35,8 @@
         // Check connection
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
+        }else {
+            
         }
 
         function booleanToNightDay($boolean) {
@@ -45,6 +47,7 @@
             }
             return $boolean;
         }
+        
 
         $query = "SELECT * FROM `hot_oil2` ORDER BY `id` DESC, `author` DESC";
         $result = mysqli_query($conn, $query);
@@ -54,8 +57,8 @@
                 $id = $row['id'];                
                 $author = $row['author'];                
                 $flow = $row['flow'];
-                $inletTemp = $row['inlet_temperature'];
-                $outletTemp =  $row['outlet_temperature'];
+                $inletTemperature = $row['inlet_temperature'];
+                $outletTemperature =  $row['outlet_temperature'];
                 $pumpPressure = $row['pump_pressure'];
                 $surgeTankPressure = $row['surge_tank_pressure'];
                 $surgeTankLevel = $row['surge_tank_level'];
@@ -71,7 +74,7 @@
                 $date = $row['date'];
                 $time = $row['time'];
 
-                $shift = booleanToYesNo($shift);
+                $shift = booleanToNightDay($shift);
 
                 echo    "<div class='plant-log'>";
                 echo    "   <h1 class='log-title'>Plant Log #$id</h1>";
@@ -84,10 +87,10 @@
                 echo    "                   <th>Message ID</th>";
                 echo    "                   <th>Author</th>";
                 echo    "                   <th>Shift</th>";
-                echo    "                   <th>Operator 1</th>";
-                echo    "                   <th>Operator 2</th>";
-                echo    "                   <th>Operator 3</th>";
-                echo    "                   <th>Shift Handover Meeting</th>";
+                echo    "                   <th>Flow</th>";
+                echo    "                   <th>Inlet Temperature</th>";
+                echo    "                   <th>Outlet Temperature</th>";
+                echo    "                   <th>Pump Pressure</th>";
                 echo    "               </tr>";
                 echo    "           </thead>";
                 echo    "           <tbody>";
@@ -97,86 +100,53 @@
                 echo    "                   <td>$id</td>";
                 echo    "                   <td>$author</td>";
                 echo    "                   <td>$shift</td>";
-                echo    "                   <td>$operator1</td>";
-                echo    "                   <td>$operator2</td>";
-                echo    "                   <td>$operator3</td>";
-                echo    "                   <td>$shiftHandoverMeeting</td>";
+                echo    "                   <td>$flow</td>";
+                echo    "                   <td>$inletTemperature</td>";
+                echo    "                   <td>$outletTemperature</td>";
+                echo    "                   <td>$pumpPressure</td>";
                 echo    "               </tr>";
                 echo    "           </tbody>";
                 echo    "       </table>";
                 echo    "       <table class='sub-menu-table'>";
                 echo    "           <thead>";
                 echo    "               <tr>";
-                echo    "                   <th>Start of Shift Meeting</th>";
-                echo    "                   <th>Plant Status</th>";
-                echo    "                   <th>Equipment Outage</th>";
-                echo    "                   <th>Filter Change</th>";
-                echo    "                   <th>Pigging</th>";
-                echo    "                   <th>Recycle Pumps</th>";
-                echo    "                   <th>Production Tank Level</th>";
+                echo    "                   <th>Surge Tank Pressure</th>";
+                echo    "                   <th>Surge Tank Level</th>";
+                echo    "                   <th>Fuel Gas Pressure</th>";
+                echo    "                   <th>Stack Temperature</th>";
+                echo    "                   <th>Air Temperature</th>";
+                echo    "                   <th>Flame Condition</th>";
+                echo    "                   <th>Shift</th>";
                 echo    "               <tr>";
                 echo    "           </thead>";
                 echo    "           <tbody>";
                 echo    "               <tr>";
-                echo    "                   <td>$startOfShiftMeeting</td>";
-                echo    "                   <td>$plantStatus</td>";
-                echo    "                   <td>$equipmentOutage</td>";
-                echo    "                   <td>$filterChange</td>";
-                echo    "                   <td>$pigging</td>";
-                echo    "                   <td>$recyclePumps</td>";
-                echo    "                   <td>$productionTankLevel</td>";
+                echo    "                   <td>$surgeTankPressure</td>";
+                echo    "                   <td>$surgeTankLevel</td>";
+                echo    "                   <td>$fuelGasPressure</td>";
+                echo    "                   <td>$stackTemperature</td>";
+                echo    "                   <td>$airTemperature</td>";
+                echo    "                   <td>$flameCondition</td>";
+                echo    "                   <td>$shift</td>";
                 echo    "               </tr>";
                 echo    "           </tbody>";
                 echo    "       </table>";
                 echo    "       <table class='sub-menu-table'>";
                 echo    "           <thead>";
                 echo    "               <tr>";
-                echo    "                   <th>LPG Bullet Peak Level</th>";
-                echo    "                   <th>LPG Bullet Peak Pressure</th>";
-                echo    "                   <th>Berm Water Samples Taken</th>";
-                echo    "                   <th>Plant Process Discussion</th>";
-                echo    "                   <th>Operational Targets</th>";
-                echo    "                   <th>Recycle Pumps</th>";                
-                echo    "                   <th>Production Tank Level</th>";
+                echo    "                   <th>Month</th>";
+                echo    "                   <th>Day</th>";
+                echo    "                   <th>Year</th>";                
                 echo    "               </tr>";
                 echo    "           </thead>";
                 echo    "           <tbody>";
                 echo    "               <tr>";
-                echo    "                   <td>$lPG_BulletPeakLevel</td>";
-                echo    "                   <td>$lPG_BulletPeakPressure</td>";
-                echo    "                   <td>$bermWaterSamplesTaken</td>";
-                echo    "                   <td>$plantProcessDiscussion</td>";
-                echo    "                   <td>$operationalTargets</td>";
-                echo    "                   <td>$recyclePumps</td>";
-                echo    "                   <td>$productionTankLevel</td>";
+                echo    "                   <td>$month</td>";
+                echo    "                   <td>$day</td>";
+                echo    "                   <td>$year</td>";
                 echo    "               </tr>";
                 echo    "           </tbody>";
-                echo    "       </table>";
-                echo    "       <table class='sub-menu-table'>";
-                echo    "           <thead>";
-                echo    "               <tr>";
-                echo    "                   <th>Upcoming Activities</th>";
-                echo    "                   <th>HSE Concerns</th>";
-                echo    "                   <th>Regulatory Requirements</th>";
-                echo    "                   <th>Staff Discussion</th>";
-                echo    "                   <th>Weather & Effects On Operations</th>";
-                echo    "                   <th>Permit Extensions/Critical Tasks</th>";                
-                echo    "               </tr>";
-                echo    "           </thead>";
-                echo    "           <tbody>";
-                echo    "               <tr>";
-                echo    "                   <td>$upcomingActivities</td>";
-                echo    "                   <td>$hSE_Concerns</td>";
-                echo    "                   <td>$regulatoryRequirements</td>";
-                echo    "                   <td>$staffDiscussion</td>";
-                echo    "                   <td>$weatherAndEffectsOnOperations</td>";
-                echo    "                   <td>$permitExtensionsCriticalTasks</td>";
-                echo    "               </tr>";
-                echo    "           </tbody>";
-                echo    "       </table>";
-                echo    "       <p class='plant-log-remarks'>";
-                echo    "           $remark";
-                echo    "       </p>";                
+                echo    "       </table>";                                                
                 echo    "   </div>"; 
                 echo    "</div>";
             }
