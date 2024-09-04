@@ -37,7 +37,7 @@
             die("Connection failed: " . mysqli_connect_error());
         }        
 
-        $query = "SELECT * FROM `np_daily_production` ORDER BY `id` DESC, `author` DESC";
+        $query = "SELECT * FROM `np_daily_production2` ORDER BY `id` DESC, `author` DESC";
         $result = mysqli_query($conn, $query);
         if (mysqli_num_rows($result) > 0) {                                            
             while($row = mysqli_fetch_assoc($result)) {
