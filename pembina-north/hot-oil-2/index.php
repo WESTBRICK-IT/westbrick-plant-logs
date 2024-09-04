@@ -12,7 +12,7 @@
 <body>
     <a href="../"><img class="main-title" src="../../images/westbrick-plant-logs.svg" alt="Westbrick Plant Logs"></a>
     <h1 class="sub-page-title">Pembina North - Hot Oil 2</h1>
-    <button class="button" onclick="window.location.href='./add-new-log/'" type="button">Add New Log</button>
+    <button class="button" onclick="window.location.href='./add-new-log-hot-oil-2/'" type="button">Add New Log</button>
 
     
     <?php
