@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Westbrick IT Plant Logs - Add New Log</title>
-    <link rel="stylesheet" href="../../style/style.css">
-    <script src="../../script/sub-menu-script.js" defer></script>
-    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <title>Westbrick IT Plant Logs - Pembina North - Safety Bypass Log - Add New Log</title>
+    <link rel="stylesheet" href="../../../style/style.css">
+    <script src="../../../script/sub-menu-script.js" defer></script>
+    <link rel="icon" href="../../../favicon.ico" type="image/x-icon">
 </head>
 <body>
     <?php
@@ -36,30 +36,12 @@
         }    
 
         $author = $_POST['author'];
-        $shift = $_POST['shift'];
-        $shiftHandoverMeeting = $_POST['shift-handover-meeting'];
-        $startOfShiftMeeting = $_POST['start-of-shift-meeting'];
-        $operator1 = $_POST['operator1'];
-        $operator2 = $_POST['operator2'];
-        $operator3 = $_POST['operator3'];
-        $plantStatus = $_POST['plant-status'];
-        $equipmentOutage = $_POST['equipment-outage'];
-        $filterChange = $_POST['filter-change'];
-        $pigging = $_POST['pigging'];
-        $recyclePumps = $_POST['recycle-pumps'];
-        $productionTankLevel = $_POST['production-tank-level'];
-        $lPG_BulletPeakLevel = $_POST['lpg-bullet-peak-level'];
-        $lPG_BulletPeakPressure = $_POST['lpg-bullet-peak-pressure'];
-        $bermWaterSamplesTaken = $_POST['berm-water-samples-taken'];
-        $plantProcessDiscussion = $_POST['plant-process-discussion'];
-        $operationalTargets = $_POST['operational-targets'];
-        $overRidesOrSafetiesBypassed = $_POST['over-rides-or-safeties-bypassed'];
-        $upcomingActivities = $_POST['upcoming-activities'];
-        $hSE_Concerns = $_POST['hse-concerns'];
-        $regulatoryRequirements = $_POST['regulatory-requirements'];
-        $staffDiscussion = $_POST['staff-discussion'];
-        $weatherAndEffectsOnOperations = $_POST['weather-and-effects-on-operations'];
-        $permitExtensionsCriticalTasks = $_POST['permit-extensions-critical-tasks'];
+        $dateAndTimeOfBypass = $_POST['date-and-time-of-bypass'];
+        $safeWorkPermitNumber = $_POST['safe-work-permit-number'];
+        $equipmentName = $_POST['equipment-name'];
+        $deviceTag = $_POST['device-tag'];
+        $estimatedBypassRemovalDateTime = $_POST['estimated-bypass-removal-date-time'];
+        $dateAndTimeOfBypassRemoval = $_POST['date-and-time-of-bypass-removal'];
         $remark = $_POST['remark'];        
         $date = date('Y-m-d');        
         date_default_timezone_set('America/Denver'); 
@@ -71,16 +53,15 @@
         
         $remark = convertApostrophe($remark);
         $author = convertApostrophe($author);
-        $shift = convertApostrophe($shift);
-        $shiftHandoverMeeting = convertApostrophe($shiftHandoverMeeting);
-        // finishing this later        
+        $equipmentName = convertApostrophe($equipmentName);
+        $deviceTag = convertApostrophe($deviceTag);        
         
-        $sql = "INSERT INTO westbrick_plant_log1 (author, shift, operator1, operator2, operator3, shift_handover_meeting, plant_status, equipment_outage, filter_change, pigging, recycle_pumps, production_tank_level, lpg_bullet_peak_level, lpg_bullet_peak_pressure, berm_water_samples_taken, plant_process_discussion, operational_targets, overrides_or_safeties_bypassed, upcoming_activities, hse_concerns, regulatory_requirements, staff_discussion, weather_and_effects_on_operations, permit_extensions_critical_tasks, remark, date, time, start_of_shift_meeting) VALUES ('$author', '$shift', '$operator1', '$operator2', '$operator3', '$shiftHandoverMeeting', '$plantStatus', '$equipmentOutage', '$filterChange', '$pigging', '$recyclePumps', '$productionTankLevel', '$lPG_BulletPeakLevel', '$lPG_BulletPeakPressure', '$bermWaterSamplesTaken', '$plantProcessDiscussion', '$operationalTargets', '$overRidesOrSafetiesBypassed', '$upcomingActivities', '$hSE_Concerns', '$regulatoryRequirements', '$staffDiscussion', '$weatherAndEffectsOnOperations', '$permitExtensionsCriticalTasks', '$remark', '$date', '$time', '$startOfShiftMeeting')";
+        $sql = "INSERT INTO safety_bypass_log2 (author, date_and_time_of_bypass, safe_work_permit_number, equipment_name, device_tag, estimated_bypass_removal_date_time, date_and_time_of_bypass_removal, remark, date, time) VALUES ('$author', '$dateAndTimeOfBypass', '$safeWorkPermitNumber', '$equipmentName', '$deviceTag', '$estimatedBypassRemovalDateTime', '$dateAndTimeOfBypassRemoval', '$remark', '$date', '$time')";
         
         if ($conn->query($sql) === TRUE) {
             // echo "<h1>Article $title submitted successfully! Redirecting to articles page in 5 seconds.</h1>";
             echo "<div class='westbrick-success-svg-container'>";
-            echo    "<img class='westbrick-success-svg' src='../../images/plant-log-submitted-successfully.svg' alt='WESTBRICK SUCCESS SVG'>";
+            echo    "<img class='westbrick-success-svg' src='../../../images/plant-log-submitted-successfully.svg' alt='WESTBRICK SUCCESS SVG'>";
             echo    "<button class='home-button' type='button' onclick='window.location.href=`../`;'>Home</button>";
             echo "</div>";
             // echo "<br><h1>File name: $image" . "File tmp name: $image_tmp" . "</h1>";

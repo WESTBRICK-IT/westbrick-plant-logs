@@ -4,207 +4,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Westbrick </title>
-    <link rel="stylesheet" href="../../style/style.css?v=1.1">
-    <script src="../../script/sub-menu-script.js" defer></script>
-    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <title>Westbrick IT Plant Logs - Pembina North - Safety Bypass Log - Add New Log</title>
+    <link rel="stylesheet" href="../../../style/style.css?v=1.1">
+    <script src="../../../script/sub-menu-script.js" defer></script>
+    <link rel="icon" href="../../../favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <a href="../"><img class="main-title" src="../../images/westbrick-plant-logs.svg" alt="Westbrick Plant Log"></a>
-    <h1 class="sub-page-title">Add New Log</h1>
+    <a href="../"><img class="main-title" src="../../../images/westbrick-plant-logs.svg" alt="Westbrick Plant Log"></a>
+    <h1 class="sub-page-title">Pembina North - Safety Bypass Log - Add New Log</h1>
     <form class="submission-form" method="post" action="add-new-log.php" enctype="multipart/form-data"> 
         <div class="input-group">
             <div class="top-stuff">
                 <div>
                     <label for="author">Author:</label>
                     <input type="text" id="author" name="author"></input>
-                </div>
-                
+                </div>               
                 <div>
-                    <label for="shift">Shift:</label>
-                    <input type="text" id="shift" name="shift"></input>
+                    <label for="date-and-time-of-bypass">Date and Time of Bypass:</label>
+                    <input type="text" id="date-and-time-of-bypass" name="date-and-time-of-bypass"></input>
                 </div>
                 <div>
-                    <label for="shift-handover-meeting">Shift Handover Meeting:</label>
-                    <input type="text" id="shift-handover-meeting" name="shift-handover-meeting"></input>
+                    <label for="safe-work-permit-number">Safe Work Permit Number:</label>
+                    <input type="number" id="safe-work-permit-number" name="safe-work-permit-number"></input>
                 </div>                
             </div>
             <div class="middle-stuff">
                 <div>
-                    <label for="start-of-shift-meeting">Start of Shift Meeting:</label>
-                    <input type="text" id="start-of-shift-meeting" name="start-of-shift-meeting"></input>
+                    <label for="equipment-name">Equipment Name:</label>
+                    <input type="text" id="equipment-name" name="equipment-name"></input>
                 </div>
                 <div>
-                    <label for="operator1">Operator 1:</label>
-                    <input type="text" id="operator1" name="operator1"></input>
+                    <label for="device-tag">Device Tag:</label>
+                    <input type="text" id="device-tag" name="device-tag"></input>
                 </div>
-
                 <div>
-                    <label for="operator2">Operator 2:</label>
-                    <input type="text" id="operator2" name="operator2"></input>
+                    <label for="estimated-bypass-removal-date-time">Estimated Bypass Removal Date/Time:</label>
+                    <input type="text" id="estimated-bypass-removal-date-time" name="estimated-bypass-removal-date-time"></input>
                 </div>                               
             </div>
             <div class="middle-stuff">
                 <div>
-                    <label for="operator3">Operator 3:</label>
-                    <input type="text" id="operator3" name="operator3"></input>
-                </div> 
-                <div>
-                    <label for="plant-status">Plant Status:</label>
-                    <input type="text" id="plant-status" name="plant-status"></input>
-                </div>
-
-                <div>
-                    <label for="equipment-outage">Equipment Outage:</label>
-                    <input type="text" id="equipment-outage" name="equipment-outage"></input>
-                </div>                
-            </div>
-            <div class="middle-stuff">
-                <div>
-                    <label for="filter-change">Filter Change:</label>
-                    <input type="text" id="filter-change" name="filter-change"></input>
-                </div>
-                <div>
-                    <label for="pigging">Pigging:</label>
-                    <input type="text" id="pigging" name="pigging"></input>
-                </div>
-
-                <div>
-                    <label for="recycle-pumps">Recycle Pumps:</label>
-                    <input type="text" id="recycle-pumps" name="recycle-pumps"></input>
-                </div>                
-            </div>
-            <div class="middle-stuff">
-                <div>
-                    <label for="production-tank-level">Production Tank Level:</label>
-                    <input type="number" id="production-tank-level" name="production-tank-level" step="0.00000001"></input>
-                </div>
-                <div>
-                    <label for="lpg-bullet-peak-level">LPG Bullet Peak Level:</label>
-                    <input type="number" id="lpg-bullet-peak-level" name="lpg-bullet-peak-level"></input>
-                </div>
-
-                <div>
-                    <label for="lpg-bullet-peak-pressure">LPG Bullet Peak Pressure:</label>
-                    <input type="number" id="lpg-bullet-peak-pressure" name="lpg-bullet-peak-pressure"></input>
-                </div>                
-            </div>
-            <div class="middle-stuff">
-                <div class="radio-container">
-                    <h3 class="radio-container-label">Berm Water Samples Taken:</h3>
-                    <div class="radio-option">
-                        <input class="radio-input" type="radio" id="berm-water-samples-taken-yes" name="berm-water-samples-taken" value="1">
-                        <label class="radio-label" for="berm-water-samples-taken-yes">Yes</label>
-                    </div>
-                    <div class="radio-option">
-                        <input class="radio-input" type="radio" id="berm-water-samples-taken-no" name="berm-water-samples-taken" value="0">
-                        <label class="radio-label" for="berm-water-samples-taken-no">No</label>
-                    </div>
-                </div>
-                <div class="radio-container">
-                    <h3 class="radio-container-label">Plant Process Discussion:</h3>
-                    <div class="radio-option">
-                        <input class="radio-input" type="radio" id="plant-process-discussion-yes" name="plant-process-discussion" value="1">
-                        <label class="radio-label" for="plant-process-discussion-yes">Yes</label>
-                    </div>
-                    <div class="radio-option">
-                        <input class="radio-input" type="radio" id="plant-process-discussion-no" name="plant-process-discussion" value="0">
-                        <label class="radio-label" for="plant-process-discussion-no">No</label>
-                    </div>
-                </div>
-
-                <div class="radio-container">
-                    <h3 class="radio-container-label">Operational Targets:</h3>
-                    <div class="radio-option">
-                        <input class="radio-input" type="radio" id="operational-targets-yes" name="operational-targets" value="1">
-                        <label class="radio-label" for="operational-targets-yes">Yes</label>
-                    </div>
-                    <div class="radio-option">
-                        <input class="radio-input" type="radio" id="operational-targets-no" name="operational-targets" value="0">
-                        <label class="radio-label" for="operational-targets-no">No</label>
-                    </div>
-                </div>                
-            </div>
-            <div class="middle-stuff">                
-                <div>
-                    <label for="over-rides-or-safeties-bypassed">Over-rides or Safeties Bypassed:</label>
-                    <input type="text" id="over-rides-or-safeties-bypassed" name="over-rides-or-safeties-bypassed"></input>
-                </div>
-                <div class="radio-container">
-                    <h3 class="radio-container-label">Upcoming Activities:</h3>
-                    <div class="radio-option">
-                        <input class="radio-input" type="radio" id="upcoming-activities-yes" name="upcoming-activities" value="1">
-                        <label class="radio-label" for="upcoming-activities-yes">Yes</label>
-                    </div>
-                    <div class="radio-option">
-                        <input class="radio-input" type="radio" id="upcoming-activities-no" name="upcoming-activities" value="0">
-                        <label class="radio-label" for="upcoming-activities-no">No</label>
-                    </div>
-                </div>
-
-                <div class="radio-container">
-                    <h3 class="radio-container-label">HSE Concerns:</h3>
-                    <div class="radio-option">
-                        <input class="radio-input" type="radio" id="hse-concerns-yes" name="hse-concerns" value="1">
-                        <label class="radio-label" for="hse-concerns-yes">Yes</label>
-                    </div>
-                    <div class="radio-option">
-                        <input class="radio-input" type="radio" id="hse-concerns-no" name="hse-concerns" value="0">
-                        <label class="radio-label" for="hse-concerns-no">No</label>
-                    </div>
-                </div>                
-            </div>
-            <div class="middle-stuff">     
-                <div class="radio-container">
-                    <h3 class="radio-container-label">Regulatory Requirements:</h3>
-                    <div class="radio-option">
-                        <input class="radio-input" type="radio" id="regulatory-requirements-yes" name="regulatory-requirements" value="1">
-                        <label class="radio-label" for="regulatory-requirements-yes">Yes</label>
-                    </div>
-                    <div class="radio-option">
-                        <input class="radio-input" type="radio" id="regulatory-requirements-no" name="regulatory-requirements" value="0">
-                        <label class="radio-label" for="regulatory-requirements-no">No</label>
-                    </div>
-                </div>           
-
-                <div class="radio-container">
-                    <h3 class="radio-container-label">Staff Discussion:</h3>
-                    <div class="radio-option">
-                        <input class="radio-input" type="radio" id="staff-discussion-yes" name="staff-discussion" value="1">
-                        <label class="radio-label" for="staff-discussion-yes">Yes</label>
-                    </div>
-                    <div class="radio-option">
-                        <input class="radio-input" type="radio" id="staff-discussion-no" name="staff-discussion" value="0">
-                        <label class="radio-label" for="staff-discussion-no">No</label>
-                    </div>
-                </div>
-
-                <div class="radio-container">
-                    <h3 class="radio-container-label">Weather & Effects On Operations:</h3>
-                    <div class="radio-option-combo">
-                        <div class="radio-option">
-                            <input class="radio-input" type="radio" id="weather-and-effects-on-operations-yes" name="weather-and-effects-on-operations" value="1">
-                            <label class="radio-label" for="weather-and-effects-on-operations-yes">Yes</label>
-                        </div>
-                        <div class="radio-option">
-                            <input class="radio-input" type="radio" id="weather-and-effects-on-operations-no" name="weather-and-effects-on-operations" value="0">
-                            <label class="radio-label" for="weather-and-effects-on-operations-no">No</label>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-            <div>
-                <label for="permit-extensions-critical-tasks">Permit Extensions/Critical Tasks:</label>
-                <input type="text" id="permit-extensions-critical-tasks" name="permit-extensions-critical-tasks"></input>
+                    <label for="date-and-time-of-bypass-removal">Date/Time of Bypass Removal:</label>
+                    <input type="text" id="date-and-time-of-bypass-removal" name="date-and-time-of-bypass-removal"></input>
+                </div>                 
             </div>
             <div class="remark-div">
                 <label for="remark">Remark:</label>
                 <textarea class="remark" type="text" id="remark" name="remark"></textarea>
-            </div>
-            
-        </div>       
-                    
+            </div>            
+        </div>      
         <input class="submit-button" type="submit" value="Post Log"></input>
     </form>    
     <button class="button go-back-button" type="button">Go back</button>
