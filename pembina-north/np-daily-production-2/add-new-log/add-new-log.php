@@ -55,6 +55,12 @@
         $remark = convertApostrophe($remark);
         $author = convertApostrophe($author);
         $productionMonth = convertApostrophe($productionMonth);
+
+        function addSpacingToRemark($remark) {                      
+            $remark = str_replace(["\r", "\n"], "<p></p>", $remark);
+            return $remark;
+        }
+        $remark = addSpacingToRemark($remark);
         
         $sql = "INSERT INTO np_daily_production2 (author, inlet, sales, lpg, oil, production_month, production_day, production_year, remark, date, time) VALUES ('$author', '$inlet', '$sales', '$lPG', '$oil', '$productionMonth', '$productionDay', '$productionYear', '$remark', '$date', '$time')";
         

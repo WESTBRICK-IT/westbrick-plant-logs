@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Westbrick IT Plant Logs - Add New Log</title>
+    <title>Westbrick IT Plant Logs - Pembina North - Volcano 2 - Add New Log</title>
     <link rel="stylesheet" href="../../../style/style.css">
     <script src="../../../script/sub-menu-script.js" defer></script>
     <link rel="icon" href="../../../favicon.ico" type="image/x-icon">

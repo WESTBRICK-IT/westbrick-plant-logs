@@ -75,9 +75,9 @@
                 echo    "               </tr>";
                 echo    "           </tbody>";
                 echo    "       </table>";                
-                echo    "       <p class='plant-log-remarks'>";
-                echo    "           $remark";
-                echo    "       </p>";                
+                echo    "       <div class='plant-log-remarks'>";
+                echo    "           <p>$remark</p>";                
+                echo    "       </div>";                 
                 echo    "   </div>"; 
                 echo    "</div>";
             }

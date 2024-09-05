@@ -54,7 +54,12 @@
         $remark = convertApostrophe($remark);
         $author = convertApostrophe($author);
         $equipmentName = convertApostrophe($equipmentName);
-        $deviceTag = convertApostrophe($deviceTag);        
+        $deviceTag = convertApostrophe($deviceTag);          
+        function addSpacingToRemark($remark) {                      
+            $remark = str_replace(["\r", "\n"], "<p></p>", $remark);
+            return $remark;
+        }
+        $remark = addSpacingToRemark($remark);
         
         $sql = "INSERT INTO safety_bypass_log2 (author, date_and_time_of_bypass, safe_work_permit_number, equipment_name, device_tag, estimated_bypass_removal_date_time, date_and_time_of_bypass_removal, remark, date, time) VALUES ('$author', '$dateAndTimeOfBypass', '$safeWorkPermitNumber', '$equipmentName', '$deviceTag', '$estimatedBypassRemovalDateTime', '$dateAndTimeOfBypassRemoval', '$remark', '$date', '$time')";
         

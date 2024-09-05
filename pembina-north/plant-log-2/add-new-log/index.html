@@ -11,7 +11,7 @@
 </head>
 <body>
     <a href="../"><img class="main-title" src="../../../images/westbrick-plant-logs.svg" alt="Westbrick Plant Log"></a>
-    <h1 class="sub-page-title">Plant Log 2 - Add New Log</h1>
+    <h1 class="sub-page-title">Pembina North - Plant Log 2 - Add New Log</h1>
     <form class="submission-form" method="post" action="add-new-log.php" enctype="multipart/form-data"> 
         <div class="input-group">
             <div class="top-stuff">
@@ -20,9 +20,16 @@
                     <input type="text" id="author" name="author"></input>
                 </div>
                 
-                <div>
-                    <label for="shift">Shift:</label>
-                    <input type="text" id="shift" name="shift"></input>
+                <div class="radio-container">
+                    <h3 class="radio-container-label">Shift:</h3>
+                    <div class="radio-option">
+                        <input class="radio-input" type="radio" id="shift-day" name="shift" value="1">
+                        <label class="radio-label" for="shift-day">Day</label>
+                    </div>
+                    <div class="radio-option">
+                        <input class="radio-input" type="radio" id="shift-night" name="shift" value="0">
+                        <label class="radio-label" for="shift-night">Night</label>
+                    </div>
                 </div>
                 <div>
                     <label for="shift-handover-meeting">Shift Handover Meeting:</label>

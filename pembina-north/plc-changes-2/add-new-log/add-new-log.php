@@ -51,7 +51,12 @@
         $author = convertApostrophe($author);
         $shift = convertApostrophe($shift);
         $shiftHandoverMeeting = convertApostrophe($shiftHandoverMeeting);
-        // finishing this later        
+        
+        function addSpacingToRemark($remark) {                      
+            $remark = str_replace(["\r", "\n"], "<p></p>", $remark);
+            return $remark;
+        }
+        $remark = addSpacingToRemark($remark);
         
         $sql = "INSERT INTO plc_changes2 (author, asset, duration, remark, date, time) VALUES ('$author', '$asset', '$duration', '$remark', '$date', '$time')";
         

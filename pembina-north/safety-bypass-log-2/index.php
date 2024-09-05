@@ -11,7 +11,7 @@
 </head>
 <body>
     <a href="../"><img class="main-title" src="../../images/westbrick-plant-logs.svg" alt="Westbrick Plant Logs"></a>
-    <h1 class="sub-page-title">Pembina North - Safety Bypass Log - Add New Log</h1>
+    <h1 class="sub-page-title">Pembina North - Safety Bypass Log</h1>
     <button class="button" onclick="window.location.href='./add-new-log/'" type="button">Add New Log</button>
     <button class="button go-back-button" type="button">Go back</button>
     
@@ -84,9 +84,9 @@
                 echo    "               </tr>";
                 echo    "           </tbody>";
                 echo    "       </table>";
-                echo    "       <p class='plant-log-remarks'>";
-                echo    "           $remark";
-                echo    "       </p>";                
+                echo    "       <div class='plant-log-remarks'>";
+                echo    "           <p>$remark</p>";                
+                echo    "       </div>";                 
                 echo    "   </div>"; 
                 echo    "</div>";
             }

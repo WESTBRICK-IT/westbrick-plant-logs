@@ -11,7 +11,7 @@
 </head>
 <body>
     <a href="../"><img class="main-title" src="../../images/westbrick-plant-logs.svg" alt="Westbrick Plant Logs"></a>
-    <h1 class="sub-page-title">Plant Log 2</h1>
+    <h1 class="sub-page-title">Pembina North - Plant Log 2</h1>
     <button class="button" onclick="window.location.href='./add-new-log/'" type="button">Add New Log</button>
     <button class="button go-back-button" type="button">Go back</button>
     
@@ -46,6 +46,16 @@
             return $boolean;
         }
 
+        function booleanToNightDay($boolean) {
+            if($boolean == 1) {
+                $boolean = "Day";
+            } else if($boolean == 0) {
+                $boolean = "Night";
+            }
+            return $boolean;
+        }
+        
+
         $query = "SELECT * FROM `westbrick_plant_log1` ORDER BY `id` DESC, `author` DESC";
         $result = mysqli_query($conn, $query);
         if (mysqli_num_rows($result) > 0) {                                            
@@ -77,7 +87,7 @@
                 $staffDiscussion = $row['staff_discussion'];
                 $weatherAndEffectsOnOperations = $row['weather_and_effects_on_operations'];
                 $permitExtensionsCriticalTasks = $row['permit_extensions_critical_tasks'];
-                $remark = $row['remark'];
+                $remark = $row['remark'];                
                 $date = $row['date'];
                 $time = $row['time'];
 
@@ -89,6 +99,8 @@
                 $regulatoryRequirements = booleanToYesNo($regulatoryRequirements);
                 $staffDiscussion = booleanToYesNo($staffDiscussion);
                 $weatherAndEffectsOnOperations = booleanToYesNo($weatherAndEffectsOnOperations);
+
+                $shift = booleanToNightDay($shift);
 
                 echo    "<div class='plant-log'>";
                 echo    "   <h1 class='log-title'>Plant Log #$id</h1>";
@@ -191,9 +203,9 @@
                 echo    "               </tr>";
                 echo    "           </tbody>";
                 echo    "       </table>";
-                echo    "       <p class='plant-log-remarks'>";
-                echo    "           $remark";
-                echo    "       </p>";                
+                echo    "       <div class='plant-log-remarks'>";
+                echo    "           <p>$remark</p>";                
+                echo    "       </div>";                
                 echo    "   </div>"; 
                 echo    "</div>";
             }
