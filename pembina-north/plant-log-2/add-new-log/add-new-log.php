@@ -11,7 +11,7 @@
 </head>
 <body>
     <?php
-        $allowedIPs = array('206.174.198.58', '206.174.198.59', '50.99.132.206'); // Define the list of allowed IP addresses
+        $allowedIPs = array('206.174.198.58', '206.174.198.59', '50.99.132.206', '170.203.211.167'); // Define the list of allowed IP addresses
 
         $remoteIP = $_SERVER['REMOTE_ADDR']; // Get the remote IP address of the client
         

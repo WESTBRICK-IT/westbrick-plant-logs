@@ -15,7 +15,7 @@
     <button class="button" onclick="window.location.href='./add-new-log/'" type="button">Add New Log</button>
     <button class="button go-back-button" type="button">Go back</button>
     <?php
-        $allowedIPs = array('206.174.198.58', '206.174.198.59', '50.99.132.206'); // Define the list of allowed IP addresses
+        $allowedIPs = array('206.174.198.58', '206.174.198.59', '50.99.132.206', '170.203.211.167'); // Define the list of allowed IP addresses
 
         $remoteIP = $_SERVER['REMOTE_ADDR']; // Get the remote IP address of the client
 
@@ -48,12 +48,22 @@
         }
         
 
-        $query = "SELECT * FROM `hot_oil2` ORDER BY `id` DESC, `author` DESC";
+        $query = "SELECT * FROM `hot_oil2` ORDER BY `new_id` DESC, `author` DESC";
         $result = mysqli_query($conn, $query);
         if (mysqli_num_rows($result) > 0) {                                            
             while($row = mysqli_fetch_assoc($result)) {
                                 
-                $id = $row['id'];                
+                $id = $row['id']; 
+                $new_id = $row['new_id'];
+                $new_id = $new_id + 8;
+                // The new ID is autoincremented, the old ID are missing some so if the new id and old id aren't equal use the old ID, the new ID will be used for new logs
+                if($new_id != $id){
+                    // If the id is 0 that means it's a new_ID so display that, if not display the old ID
+                    if($id == 0){                        
+                    }else{
+                        $new_id = $id;
+                    }                    
+                }                
                 $author = $row['author'];                
                 $flow = $row['flow'];
                 $inletTemperature = $row['inlet_temperature'];
@@ -72,17 +82,18 @@
                 $remark = $row['remark'];
                 $date = $row['date'];
                 $time = $row['time'];
+				$dateOfLog = $row['date_of_log'];
 
                 $shift = booleanToNightDay($shift);
 
                 echo    "<div class='plant-log'>";
-                echo    "   <h1 class='log-title'>Plant Log #$id</h1>";
+                echo    "   <h1 class='log-title'>Plant Log #$new_id</h1>";
                 echo    "   <div class='table-wrapper'>";
                 echo    "       <table class='sub-menu-table'>";
                 echo    "           <thead>";
                 echo    "               <tr>";
-                echo    "                   <th>Date</th>";
-                echo    "                   <th>Time</th>";                
+                echo    "                   <th>Date of Database Insertion</th>";
+                echo    "                   <th>Time of Database Insertion</th>";                
                 echo    "                   <th>Message ID</th>";
                 echo    "                   <th>Author</th>";
                 echo    "                   <th>Shift</th>";
@@ -96,7 +107,7 @@
                 echo    "               <tr>";
                 echo    "                   <td>$date</td>";
                 echo    "                   <td>$time</td>";
-                echo    "                   <td>$id</td>";
+                echo    "                   <td>$new_id</td>";
                 echo    "                   <td>$author</td>";
                 echo    "                   <td>$shift</td>";
                 echo    "                   <td>$flow</td>";
@@ -114,8 +125,7 @@
                 echo    "                   <th>Fuel Gas Pressure</th>";
                 echo    "                   <th>Stack Temperature</th>";
                 echo    "                   <th>Air Temperature</th>";
-                echo    "                   <th>Flame Condition</th>";
-                echo    "                   <th>Shift</th>";
+                echo    "                   <th>Flame Condition</th>";                
                 echo    "               <tr>";
                 echo    "           </thead>";
                 echo    "           <tbody>";
@@ -125,8 +135,7 @@
                 echo    "                   <td>$fuelGasPressure</td>";
                 echo    "                   <td>$stackTemperature</td>";
                 echo    "                   <td>$airTemperature</td>";
-                echo    "                   <td>$flameCondition</td>";
-                echo    "                   <td>$shift</td>";
+                echo    "                   <td>$flameCondition</td>";                
                 echo    "               </tr>";
                 echo    "           </tbody>";
                 echo    "       </table>";
@@ -136,6 +145,7 @@
                 echo    "                   <th>Month</th>";
                 echo    "                   <th>Day</th>";
                 echo    "                   <th>Year</th>";                
+				echo    "                   <th>Date of Log</th>";                 
                 echo    "               </tr>";
                 echo    "           </thead>";
                 echo    "           <tbody>";
@@ -143,6 +153,7 @@
                 echo    "                   <td>$month</td>";
                 echo    "                   <td>$day</td>";
                 echo    "                   <td>$year</td>";
+				echo    "                   <td>$dateOfLog</td>";                
                 echo    "               </tr>";
                 echo    "           </tbody>";
                 echo    "       </table>";                                                
