@@ -40,22 +40,7 @@
                 <div>
                     <label for="start-of-shift-meeting">Start of Shift Meeting:</label>
                     <input type="text" id="start-of-shift-meeting" name="start-of-shift-meeting"></input>
-                </div>
-                <div>
-                    <label for="operator1">Operator 1:</label>
-                    <input type="text" id="operator1" name="operator1"></input>
-                </div>
-
-                <div>
-                    <label for="operator2">Operator 2:</label>
-                    <input type="text" id="operator2" name="operator2"></input>
-                </div>                               
-            </div>
-            <div class="middle-stuff">
-                <div>
-                    <label for="operator3">Operator 3:</label>
-                    <input type="text" id="operator3" name="operator3"></input>
-                </div> 
+                </div>                            
                 <div>
                     <label for="plant-status">Plant Status:</label>
                     <input type="text" id="plant-status" name="plant-status"></input>
@@ -201,9 +186,51 @@
                 </div>
                 
             </div>
-            <div>
-                <label for="permit-extensions-critical-tasks">Permit Extensions/Critical Tasks:</label>
-                <input type="text" id="permit-extensions-critical-tasks" name="permit-extensions-critical-tasks"></input>
+            <div class="middle-stuff">
+                <div>
+                    <label for="permit-extensions-critical-tasks">Permit Extensions/Critical Tasks:</label>
+                    <input type="text" id="permit-extensions-critical-tasks" name="permit-extensions-critical-tasks"></input>
+                </div>                 
+                <div class="radio-container">
+                    <h3 class="radio-container-label">Amine Bag Filter Changed:</h3>
+                    <div class="radio-option-combo">
+                        <div class="radio-option">
+                            <input class="radio-input" type="radio" id="amine-bag-filter-changed-yes" name="amine-bag-filter-changed" value="1">
+                            <label class="radio-label" for="amine-bag-filter-changed-yes">Yes</label>
+                        </div>
+                        <div class="radio-option">
+                            <input class="radio-input" type="radio" id="amine-bag-filter-changed-no" name="amine-bag-filter-changed" value="0">
+                            <label class="radio-label" for="amine-bag-filter-changed-no">No</label>
+                        </div>
+                    </div>
+                </div>                
+                <div class="radio-container">
+                    <h3 class="radio-container-label">Glycol Regen Filter Changed:</h3>
+                    <div class="radio-option-combo">
+                        <div class="radio-option">
+                            <input class="radio-input" type="radio" id="glycol-regen-filter-changed-yes" name="glycol-regen-filter-changed" value="1">
+                            <label class="radio-label" for="glycol-regen-filter-changed-yes">Yes</label>
+                        </div>
+                        <div class="radio-option">
+                            <input class="radio-input" type="radio" id="glycol-regen-filter-changed-no" name="glycol-regen-filter-changed" value="0">
+                            <label class="radio-label" for="glycol-regen-filter-changed-no">No</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="middle-stuff">
+                <div>
+                    <label for="category">Category:</label>
+                    <input type="text" id="category" name="category"></input>
+                </div> 
+                <div>
+                    <label for="roustabout-utilization">Roustabout Utilization:</label>
+                    <input type="text" id="roustabout-utilization" name="roustabout-utilization"></input>
+                </div>  
+                <div>
+                    <label for="operators">Operators:</label>
+                    <input type="text" id="operators" name="operators"></input>
+                </div>                
             </div>
             <div class="remark-div">
                 <label for="remark">Remark:</label>

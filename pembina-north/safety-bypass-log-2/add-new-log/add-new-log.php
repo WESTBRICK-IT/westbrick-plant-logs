@@ -36,16 +36,19 @@
         }    
 
         $author = $_POST['author'];
-        $dateAndTimeOfBypass = $_POST['date-and-time-of-bypass'];
-        $safeWorkPermitNumber = $_POST['safe-work-permit-number'];
+        $dateTimeOfBypass = $_POST['date-time-of-bypass'];
+        $bypassFormNumber = $_POST['bypass-form-number'];        
+        $safeWorkPermitNumber = $_POST['safe-work-permit-number'];        
         $equipmentName = $_POST['equipment-name'];
         $deviceTag = $_POST['device-tag'];
+        $estimatedBypassRenewal = $_POST['estimated-bypass-renewal'];        
         $estimatedBypassRemovalDateTime = $_POST['estimated-bypass-removal-date-time'];
-        $dateAndTimeOfBypassRemoval = $_POST['date-and-time-of-bypass-removal'];
+        $dateTimeOfBypassRemoval = $_POST['date-time-of-bypass-removal'];
         $remark = $_POST['remark'];        
         $date = date('Y-m-d');        
         date_default_timezone_set('America/Denver'); 
         $time = date('H:i:s', time());
+        $dateOfLog = $date . " " . $time;
         function convertApostrophe($string) { 
             $newString = str_replace("'", '`', $string); 
             return $newString; 
@@ -61,7 +64,7 @@
         }
         $remark = addSpacingToRemark($remark);
         
-        $sql = "INSERT INTO safety_bypass_log2 (author, date_and_time_of_bypass, safe_work_permit_number, equipment_name, device_tag, estimated_bypass_removal_date_time, date_and_time_of_bypass_removal, remark, date, time) VALUES ('$author', '$dateAndTimeOfBypass', '$safeWorkPermitNumber', '$equipmentName', '$deviceTag', '$estimatedBypassRemovalDateTime', '$dateAndTimeOfBypassRemoval', '$remark', '$date', '$time')";
+        $sql = "INSERT INTO safety_bypass_log2 (date_of_log, date, author, date_time_of_bypass, bypass_form_number, safe_work_permit_number, equipment_name, device_tag, estimated_bypass_renewal, estimated_bypass_removal_date_time, date_time_of_bypass_removal, remark, time) VALUES ($dateOfLog, $date, $author, $dateTimeOfBypass, $bypassFormNumber, $safeWorkPermitNumber, $equipmentName, $deviceTag, $estimatedBypassRenewal, $estimatedBypassRemovalDateTime, $dateTimeOfBypassRemoval, $remark, $time)";
         
         if ($conn->query($sql) === TRUE) {
             // echo "<h1>Article $title submitted successfully! Redirecting to articles page in 5 seconds.</h1>";

@@ -37,12 +37,17 @@
             die("Connection failed: " . mysqli_connect_error());
         }        
 
-        $query = "SELECT * FROM `np_daily_production2` ORDER BY `id` DESC, `author` DESC";
+        $query = "SELECT * FROM `np_daily_production2` ORDER BY `new_id` DESC, `author` DESC";
         $result = mysqli_query($conn, $query);
         if (mysqli_num_rows($result) > 0) {                                            
             while($row = mysqli_fetch_assoc($result)) {
                                 
-                $id = $row['id'];                
+                $id = $row['id'];
+                $newID = $row['new_id'];
+                $newID = $newID + 9;   
+                if($newID != $id){
+                    $new_id = $id;
+                }
                 $author = $row['author'];
                 $inlet = $row['inlet'];
                 $sales = $row['sales'];
@@ -50,19 +55,19 @@
                 $oil = $row['oil'];
                 $productionMonth = $row['production_month'];
                 $productionDay = $row['production_day'];
-                $productionYear = $row['production_year'];                
-                $remark = $row['remark'];
+                $productionYear = $row['production_year'];                                
                 $date = $row['date'];
-                $time = $row['time'];                
+                $time = $row['time'];
+                $dateOfLog = $row['date_of_log'];
 
                 echo    "<div class='plant-log'>";
-                echo    "   <h1 class='log-title'>Plant Log #$id</h1>";
+                echo    "   <h1 class='log-title'>Plant Log #$newID</h1>";
                 echo    "   <div class='table-wrapper'>";
                 echo    "       <table class='sub-menu-table'>";
                 echo    "           <thead>";
                 echo    "               <tr>";
-                echo    "                   <th>Date</th>";
-                echo    "                   <th>Time</th>";                
+                echo    "                   <th>Date of Database Insertion</th>";
+                echo    "                   <th>Time of Database Insertion</th>";                
                 echo    "                   <th>Message ID</th>";
                 echo    "                   <th>Author</th>";
                 echo    "                   <th>Inlet</th>";
@@ -76,7 +81,7 @@
                 echo    "               <tr>";
                 echo    "                   <td>$date</td>";
                 echo    "                   <td>$time</td>";
-                echo    "                   <td>$id</td>";
+                echo    "                   <td>$newID</td>";
                 echo    "                   <td>$author</td>";
                 echo    "                   <td>$inlet</td>";
                 echo    "                   <td>$sales</td>";
@@ -90,19 +95,20 @@
                 echo    "           <thead>";
                 echo    "               <tr>";
                 echo    "                   <th>Production Day</th>";
-                echo    "                   <th>Production Year</th>";                
+                echo    "                   <th>Production Year</th>";               
+                echo    "                   <th>Date of Log</th>";
+                echo    "                   <th>New ID</th>";
                 echo    "               <tr>";
                 echo    "           </thead>";
                 echo    "           <tbody>";
-                echo    "               <tr>";
+                echo    "               <tr>";                
                 echo    "                   <td>$productionDay</td>";
                 echo    "                   <td>$productionYear</td>";
+                echo    "                   <td>$dateOfLog</td>";
+                echo    "                   <td>$newID</td>";
                 echo    "               </tr>";
                 echo    "           </tbody>";
-                echo    "       </table>";                
-                echo    "       <div class='plant-log-remarks'>";
-                echo    "           <p>$remark</p>";                
-                echo    "       </div>";                
+                echo    "       </table>";                                
                 echo    "   </div>"; 
                 echo    "</div>";
             }

@@ -11,7 +11,7 @@
 </head>
 <body>
     <a href="../"><img class="main-title" src="../../images/westbrick-plant-logs.svg" alt="Westbrick Plant Logs"></a>
-    <h1 class="sub-page-title">Pembina North - Safety Bypass Log</h1>
+    <h1 class="sub-page-title">Pembina North - Safety Bypass Log 2</h1>
     <button class="button" onclick="window.location.href='./add-new-log/'" type="button">Add New Log</button>
     <button class="button go-back-button" type="button">Go back</button>
     
@@ -42,45 +42,66 @@
         if (mysqli_num_rows($result) > 0) {                                            
             while($row = mysqli_fetch_assoc($result)) {
                                 
-                $id = $row['id'];                
+                $id = $row['id'];    
+                $newID = $row['new_id'];
+                $newID = $newID - 100;
+                if($id <= 112){
+                    $newID = $id;
+                }
                 $author = $row['author'];
                 $dateAndTimeOfBypass = $row['date_and_time_of_bypass'];
+                $dateTimeOfBypass = $row['date_time_of_bypass'];
                 $safeWorkPermitNumber = $row['safe_work_permit_number'];
                 $equipmentName = $row['equipment_name'];
                 $deviceTag = $row['device_tag'];
                 $estimatedBypassRemovalDateTime = $row['estimated_bypass_removal_date_time'];                
                 $remark = $row['remark'];
-                $date = $row['date'];
-                $time = $row['time'];                
+                $dateOfLog = $row['date_of_log'];
+                $timeOfLog = $row['time_of_log'];  
+                $estimatedBypassRenewal = $row['estimated_bypass_renewal'];
+                $dateOfDatabaseInsertion = $row['date'];
+                $timeOfDatabaseInsertion = $row['time'];
+                $bypassFormNumber = $row['bypass_form_number'];
+                $dateTimeOfBypassRemoval = $row['date_time_of_bypass_removal'];
 
                 echo    "<div class='plant-log'>";
-                echo    "   <h1 class='log-title'>Plant Log #$id</h1>";
+                echo    "   <h1 class='log-title'>Plant Log #$newID</h1>";
                 echo    "   <div class='table-wrapper'>";
                 echo    "       <table class='sub-menu-table'>";
                 echo    "           <thead>";
                 echo    "               <tr>";
-                echo    "                   <th>Date</th>";
-                echo    "                   <th>Time</th>";                
+                echo    "                   <th>Date of Log</th>";                
                 echo    "                   <th>Message ID</th>";
                 echo    "                   <th>Author</th>";
-                echo    "                   <th>Date and Time of Bypass</th>";
+                // echo    "                   <th>Date and Time of Bypass</th>";
                 echo    "                   <th>Safe Work Permit Number</th>";
                 echo    "                   <th>Equipment Name</th>";
                 echo    "                   <th>Device Tag</th>";
                 echo    "                   <th>Estimated Bypass Removal Date/Time</th>";
+                echo    "                   <th>Date / Time of Bypass</th>";
+                echo    "                   <th>Estimated Bypass Renewal</th>";
+                echo    "                   <th>Date of Database Insertion</th>";
+                echo    "                   <th>Time of Database Insertion</th>";
+                echo    "                   <th>Bypass Form Number</th>";
+                echo    "                   <th>Date / Time of Bypass Removal</th>";
                 echo    "               </tr>";
                 echo    "           </thead>";
                 echo    "           <tbody>";
                 echo    "               <tr>";
-                echo    "                   <td>$date</td>";
-                echo    "                   <td>$time</td>";
-                echo    "                   <td>$id</td>";
+                echo    "                   <td>$dateOfLog</td>";                
+                echo    "                   <td>$newID</td>";
                 echo    "                   <td>$author</td>";
-                echo    "                   <td>$dateAndTimeOfBypass</td>";
+                // echo    "                   <td>$dateAndTimeOfBypass</td>";
                 echo    "                   <td>$safeWorkPermitNumber</td>";
                 echo    "                   <td>$equipmentName</td>";
                 echo    "                   <td>$deviceTag</td>";
                 echo    "                   <td>$estimatedBypassRemovalDateTime</td>";
+                echo    "                   <td>$dateTimeOfBypass</td>";
+                echo    "                   <td>$estimatedBypassRenewal</td>";
+                echo    "                   <td>$dateOfDatabaseInsertion</td>";
+                echo    "                   <td>$timeOfDatabaseInsertion</td>";
+                echo    "                   <td>$bypassFormNumber</td>";
+                echo    "                   <td>$dateTimeOfBypassRemoval</td>";
                 echo    "               </tr>";
                 echo    "           </tbody>";
                 echo    "       </table>";

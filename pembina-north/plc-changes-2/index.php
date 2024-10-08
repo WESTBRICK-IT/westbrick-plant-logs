@@ -37,18 +37,24 @@
             die("Connection failed: " . mysqli_connect_error());
         }
         
-        $query = "SELECT * FROM `plc_changes2` ORDER BY `id` DESC, `author` DESC";
+        $query = "SELECT * FROM `plc_changes2` ORDER BY `new_id` DESC, `author` DESC";
         $result = mysqli_query($conn, $query);
         if (mysqli_num_rows($result) > 0) {                                            
             while($row = mysqli_fetch_assoc($result)) {
-                                
-                $id = $row['id'];                
+                            
+                $newID = $row['new_id'];
+                $id = $row['id']; 
+                if($id == 0){
+                    $id = $newID - 2;
+                }
                 $author = $row['author'];
                 $asset = $row['asset'];
                 $duration = $row['duration'];
                 $remark = $row['remark'];
-                $date = $row['date'];
+                $date = $row['date'];                
                 $time = $row['time'];
+                $dateOfLog = $row['date_of_log'];
+                $timeOfLog = $row['time_of_log'];
 
                 echo    "<div class='plant-log'>";
                 echo    "   <h1 class='log-title'>Plant Log #$id</h1>";
@@ -56,22 +62,26 @@
                 echo    "       <table class='sub-menu-table'>";
                 echo    "           <thead>";
                 echo    "               <tr>";
-                echo    "                   <th>Date</th>";
-                echo    "                   <th>Time</th>";                
+                echo    "                   <th>Date of Log</th>";
+                echo    "                   <th>Time of Log</th>";                
                 echo    "                   <th>Message ID</th>";
                 echo    "                   <th>Author</th>";
                 echo    "                   <th>Asset</th>";
                 echo    "                   <th>Duration</th>";                
+                echo    "                   <th>Date of Database Insertion</th>";                
+                echo    "                   <th>Time of Database Insertion</th>";                
                 echo    "               </tr>";
                 echo    "           </thead>";
                 echo    "           <tbody>";
                 echo    "               <tr>";
-                echo    "                   <td>$date</td>";
-                echo    "                   <td>$time</td>";
+                echo    "                   <td>$dateOfLog</td>";
+                echo    "                   <td>$timeOfLog</td>";
                 echo    "                   <td>$id</td>";
                 echo    "                   <td>$author</td>";
                 echo    "                   <td>$asset</td>";
                 echo    "                   <td>$duration</td>";                
+                echo    "                   <td>$date</td>";                
+                echo    "                   <td>$time</td>";                
                 echo    "               </tr>";
                 echo    "           </tbody>";
                 echo    "       </table>";                

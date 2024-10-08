@@ -39,9 +39,10 @@
         $shift = $_POST['shift'];
         $shiftHandoverMeeting = $_POST['shift-handover-meeting'];
         $startOfShiftMeeting = $_POST['start-of-shift-meeting'];
-        $operator1 = $_POST['operator1'];
-        $operator2 = $_POST['operator2'];
-        $operator3 = $_POST['operator3'];
+        $operators = $_POST['operators'];
+        // $operator1 = $_POST['operator1'];
+        // $operator2 = $_POST['operator2'];
+        // $operator3 = $_POST['operator3'];
         $plantStatus = $_POST['plant-status'];
         $equipmentOutage = $_POST['equipment-outage'];
         $filterChange = $_POST['filter-change'];
@@ -60,10 +61,15 @@
         $staffDiscussion = $_POST['staff-discussion'];
         $weatherAndEffectsOnOperations = $_POST['weather-and-effects-on-operations'];
         $permitExtensionsCriticalTasks = $_POST['permit-extensions-critical-tasks'];
+        $amineBagFilterChanged = $_POST['amine-bag-filter-changed'];
+        $glycolRegenFilterChanged = $_POST['glycol-regen-filter-changed'];
+        $category = $_POST['category'];
+        $roustaboutUtilization = $_POST['roustabout-utilization'];
         $remark = $_POST['remark'];        
         $date = date('Y-m-d');        
         date_default_timezone_set('America/Denver'); 
         $time = date('H:i:s', time());
+        $dateOfLog = $date . " " . $time;
         function convertApostrophe($string) { 
             $newString = str_replace("'", '`', $string); 
             return $newString; 
@@ -78,10 +84,9 @@
             $remark = str_replace(["\r", "\n"], "<p></p>", $remark);
             return $remark;
         }
-        $remark = addSpacingToRemark($remark);
-       
+        $remark = addSpacingToRemark($remark);       
         
-        $sql = "INSERT INTO westbrick_plant_log1 (author, shift, operator1, operator2, operator3, shift_handover_meeting, plant_status, equipment_outage, filter_change, pigging, recycle_pumps, production_tank_level, lpg_bullet_peak_level, lpg_bullet_peak_pressure, berm_water_samples_taken, plant_process_discussion, operational_targets, overrides_or_safeties_bypassed, upcoming_activities, hse_concerns, regulatory_requirements, staff_discussion, weather_and_effects_on_operations, permit_extensions_critical_tasks, remark, date, time, start_of_shift_meeting) VALUES ('$author', '$shift', '$operator1', '$operator2', '$operator3', '$shiftHandoverMeeting', '$plantStatus', '$equipmentOutage', '$filterChange', '$pigging', '$recyclePumps', '$productionTankLevel', '$lPG_BulletPeakLevel', '$lPG_BulletPeakPressure', '$bermWaterSamplesTaken', '$plantProcessDiscussion', '$operationalTargets', '$overRidesOrSafetiesBypassed', '$upcomingActivities', '$hSE_Concerns', '$regulatoryRequirements', '$staffDiscussion', '$weatherAndEffectsOnOperations', '$permitExtensionsCriticalTasks', '$remark', '$date', '$time', '$startOfShiftMeeting')";
+        $sql = "INSERT INTO westbrick_plant_log1 (author, shift, shift_handover_meeting, plant_status, equipment_outage, filter_change, pigging, recycle_pumps, production_tank_level, lpg_bullet_peak_level, lpg_bullet_peak_pressure, berm_water_samples_taken, plant_process_discussion, operational_targets, overrides_or_safeties_bypassed, upcoming_activities, hse_concerns, regulatory_requirements, staff_discussion, weather_and_effects_on_operations, permit_extensions_critical_tasks, remark, date, time, start_of_shift_meeting, amine_bag_filter_changed, glycol_regen_filter_changed, category, roustabout_utilization, operators, date_of_log) VALUES ('$author', '$shift', '$shiftHandoverMeeting', '$plantStatus', '$equipmentOutage', '$filterChange', '$pigging', '$recyclePumps', '$productionTankLevel', '$lPG_BulletPeakLevel', '$lPG_BulletPeakPressure', '$bermWaterSamplesTaken', '$plantProcessDiscussion', '$operationalTargets', '$overRidesOrSafetiesBypassed', '$upcomingActivities', '$hSE_Concerns', '$regulatoryRequirements', '$staffDiscussion', '$weatherAndEffectsOnOperations', '$permitExtensionsCriticalTasks', '$remark', '$date', '$time', '$startOfShiftMeeting', '$amineBagFilter_changed', '$glycolRegenFilterChanged', '$category', '$roustaboutUtilization', '$operators', '$dateOfLog')";
         
         if ($conn->query($sql) === TRUE) {
             // echo "<h1>Article $title submitted successfully! Redirecting to articles page in 5 seconds.</h1>";

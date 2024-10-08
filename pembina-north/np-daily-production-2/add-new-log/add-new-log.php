@@ -42,17 +42,15 @@
         $oil = $_POST['oil'];
         $productionMonth = $_POST['production-month'];
         $productionDay = $_POST['production-day'];
-        $productionYear = $_POST['production-year'];
-        $remark = $_POST['remark'];        
+        $productionYear = $_POST['production-year'];              
         $date = date('Y-m-d');        
         date_default_timezone_set('America/Denver'); 
         $time = date('H:i:s', time());
+        $dateOfLog = $date . " " . $time;
         function convertApostrophe($string) { 
             $newString = str_replace("'", '`', $string); 
             return $newString; 
-        }    
-        
-        $remark = convertApostrophe($remark);
+        }
         $author = convertApostrophe($author);
         $productionMonth = convertApostrophe($productionMonth);
 
@@ -60,9 +58,7 @@
             $remark = str_replace(["\r", "\n"], "<p></p>", $remark);
             return $remark;
         }
-        $remark = addSpacingToRemark($remark);
-        
-        $sql = "INSERT INTO np_daily_production2 (author, inlet, sales, lpg, oil, production_month, production_day, production_year, remark, date, time) VALUES ('$author', '$inlet', '$sales', '$lPG', '$oil', '$productionMonth', '$productionDay', '$productionYear', '$remark', '$date', '$time')";
+        $sql = "INSERT INTO np_daily_production2 (author, inlet, sales, lpg, oil, production_month, production_day, production_year, date, time, date_of_log) VALUES ('$author', '$inlet', '$sales', '$lPG', '$oil', '$productionMonth', '$productionDay', '$productionYear', '$date', '$time', '$dateOfLog')";
         
         if ($conn->query($sql) === TRUE) {
             // echo "<h1>Article $title submitted successfully! Redirecting to articles page in 5 seconds.</h1>";

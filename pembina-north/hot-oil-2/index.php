@@ -37,7 +37,6 @@
         }else {
             
         }
-
         function booleanToNightDay($boolean) {
             if($boolean == 1) {
                 $boolean = "Day";
@@ -45,8 +44,7 @@
                 $boolean = "Night";
             }
             return $boolean;
-        }
-        
+        }        
 
         $query = "SELECT * FROM `hot_oil2` ORDER BY `new_id` DESC, `author` DESC";
         $result = mysqli_query($conn, $query);

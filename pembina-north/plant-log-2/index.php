@@ -37,12 +37,16 @@
             die("Connection failed: " . mysqli_connect_error());
         }
 
-        function booleanToYesNo($boolean) {
+        function booleanToYesNoNA($boolean) {            
             if($boolean == 1) {
-                $boolean = "Yes";
-            } else if($boolean == 0) {
+                $boolean = "Yes";            
+            }elseif($boolean == null) {
+                $boolean = "N/A";
+            }elseif($boolean == "") {
+                $boolean = "N/A";
+            }elseif($boolean == 0) {
                 $boolean = "No";
-            }
+            }            
             return $boolean;
         }
 
@@ -56,17 +60,21 @@
         }
         
 
-        $query = "SELECT * FROM `westbrick_plant_log1` ORDER BY `id` DESC, `author` DESC";
+        $query = "SELECT * FROM `westbrick_plant_log1` ORDER BY `new_id` DESC, `author` DESC";
         $result = mysqli_query($conn, $query);
         if (mysqli_num_rows($result) > 0) {                                            
             while($row = mysqli_fetch_assoc($result)) {
                                 
-                $id = $row['id'];                
+                $id = $row['id'];    
+                $new_id = $row['new_id'];
+                if($id == null){
+                    $id = $new_id + 61;
+                }                
                 $author = $row['author'];
                 $shift = $row['shift'];
-                $operator1 = $row['operator1'];
-                $operator2 = $row['operator2'];
-                $operator3 = $row['operator3'];
+                // $operator1 = $row['operator1'];
+                // $operator2 = $row['operator2'];
+                // $operator3 = $row['operator3'];
                 $shiftHandoverMeeting = $row['shift_handover_meeting'];
                 $startOfShiftMeeting = $row['start_of_shift_meeting'];
                 $plantStatus = $row['plant_status'];
@@ -79,7 +87,7 @@
                 $lPG_BulletPeakPressure = $row['lpg_bullet_peak_pressure'];
                 $bermWaterSamplesTaken = $row['berm_water_samples_taken'];
                 $plantProcessDiscussion = $row['plant_process_discussion'];
-                $operationalTargets = $row['operational_targets'];
+                $operationalTargets = $row['operational_targets'];                
                 $overRidesOrSafetiesBypassed = $row['overrides'];
                 $upcomingActivities = $row['upcoming_activities'];
                 $hSE_Concerns = $row['hse_concerns'];
@@ -87,20 +95,24 @@
                 $staffDiscussion = $row['staff_discussion'];
                 $weatherAndEffectsOnOperations = $row['weather_and_effects_on_operations'];
                 $permitExtensionsCriticalTasks = $row['permit_extensions_critical_tasks'];
-                $remark = $row['remark'];                
+                $remark = $row['remark'];  
+                $dateOfLog = $row['date_of_log'];
                 $date = $row['date'];
                 $time = $row['time'];
-
-                $bermWaterSamplesTaken = booleanToYesNo($bermWaterSamplesTaken);
-                $plantProcessDiscussion = booleanToYesNo($plantProcessDiscussion);
-                $operationalTargets = booleanToYesNo($operationalTargets);
-                $upcomingActivities = booleanToYesNo($upcomingActivities);
-                $hSE_Concerns = booleanToYesNo($hSE_Concerns);
-                $regulatoryRequirements = booleanToYesNo($regulatoryRequirements);
-                $staffDiscussion = booleanToYesNo($staffDiscussion);
-                $weatherAndEffectsOnOperations = booleanToYesNo($weatherAndEffectsOnOperations);
-
-                $shift = booleanToNightDay($shift);
+                $operators = $row['operators'];
+                $overRidesOrSafetiesBypassed = $row['overrides_or_safeties_bypassed'];
+                $amineConcentration = $row['amine_concentration'];
+                $amineBagFilterChanged = $row['amine_bag_filter_changed'];
+                $glycolRegenFilterChanged = $row['glycol_regen_filter_changed'];
+                
+                $bermWaterSamplesTaken = booleanToYesNoNA($bermWaterSamplesTaken);
+                $plantProcessDiscussion = booleanToYesNoNA($plantProcessDiscussion);
+                $operationalTargets = booleanToYesNoNA($operationalTargets);
+                $upcomingActivities = booleanToYesNoNA($upcomingActivities);
+                $hSE_Concerns = booleanToYesNoNA($hSE_Concerns);
+                $regulatoryRequirements = booleanToYesNoNA($regulatoryRequirements);
+                $staffDiscussion = booleanToYesNoNA($staffDiscussion);
+                $weatherAndEffectsOnOperations = booleanToYesNoNA($weatherAndEffectsOnOperations);
 
                 echo    "<div class='plant-log'>";
                 echo    "   <h1 class='log-title'>Plant Log #$id</h1>";
@@ -108,14 +120,15 @@
                 echo    "       <table class='sub-menu-table'>";
                 echo    "           <thead>";
                 echo    "               <tr>";
-                echo    "                   <th>Date</th>";
-                echo    "                   <th>Time</th>";                
+                echo    "                   <th>Date of Database Insertion</th>";
+                echo    "                   <th>Time of Database Insertion</th>";                
                 echo    "                   <th>Message ID</th>";
                 echo    "                   <th>Author</th>";
                 echo    "                   <th>Shift</th>";
-                echo    "                   <th>Operator 1</th>";
-                echo    "                   <th>Operator 2</th>";
-                echo    "                   <th>Operator 3</th>";
+                echo    "                   <th>Operators</th>";
+                // echo    "                   <th>Operator 1</th>";
+                // echo    "                   <th>Operator 2</th>";
+                // echo    "                   <th>Operator 3</th>";
                 echo    "                   <th>Shift Handover Meeting</th>";
                 echo    "               </tr>";
                 echo    "           </thead>";
@@ -126,9 +139,10 @@
                 echo    "                   <td>$id</td>";
                 echo    "                   <td>$author</td>";
                 echo    "                   <td>$shift</td>";
-                echo    "                   <td>$operator1</td>";
-                echo    "                   <td>$operator2</td>";
-                echo    "                   <td>$operator3</td>";
+                echo    "                   <td>$operators</td>";
+                // echo    "                   <td>$operator1</td>";
+                // echo    "                   <td>$operator2</td>";
+                // echo    "                   <td>$operator3</td>";
                 echo    "                   <td>$shiftHandoverMeeting</td>";
                 echo    "               </tr>";
                 echo    "           </tbody>";
@@ -138,10 +152,14 @@
                 echo    "               <tr>";
                 echo    "                   <th>Start of Shift Meeting</th>";
                 echo    "                   <th>Plant Status</th>";
+                echo    "                   <th>Amine Bag Filter Changed</th>";
+                echo    "                   <th>Glycol Regen Filter Changed</th>";
                 echo    "                   <th>Equipment Outage</th>";
                 echo    "                   <th>Filter Change</th>";
                 echo    "                   <th>Pigging</th>";
                 echo    "                   <th>Recycle Pumps</th>";
+                echo    "                   <th>Amine Concentration</th>";
+                echo    "                   <th>Roustabout Utilization</th>";
                 echo    "                   <th>Production Tank Level</th>";
                 echo    "               <tr>";
                 echo    "           </thead>";
@@ -149,10 +167,14 @@
                 echo    "               <tr>";
                 echo    "                   <td>$startOfShiftMeeting</td>";
                 echo    "                   <td>$plantStatus</td>";
+                echo    "                   <td>$amineBagFilterChanged</td>";
+                echo    "                   <td>$glycolRegenFilterChanged</td>";
                 echo    "                   <td>$equipmentOutage</td>";
                 echo    "                   <td>$filterChange</td>";
                 echo    "                   <td>$pigging</td>";
                 echo    "                   <td>$recyclePumps</td>";
+                echo    "                   <td>$amineConcentration</td>";
+                echo    "                   <td>$roustaboutUtilization</td>";
                 echo    "                   <td>$productionTankLevel</td>";
                 echo    "               </tr>";
                 echo    "           </tbody>";
@@ -164,8 +186,8 @@
                 echo    "                   <th>LPG Bullet Peak Pressure</th>";
                 echo    "                   <th>Berm Water Samples Taken</th>";
                 echo    "                   <th>Plant Process Discussion</th>";
-                echo    "                   <th>Operational Targets</th>";
-                echo    "                   <th>Recycle Pumps</th>";                
+                echo    "                   <th>Operational Targets</th>";                          
+                echo    "                   <th>Over-rides or Safeties Bypassed</th>"; 
                 echo    "                   <th>Production Tank Level</th>";
                 echo    "               </tr>";
                 echo    "           </thead>";
@@ -175,8 +197,8 @@
                 echo    "                   <td>$lPG_BulletPeakPressure</td>";
                 echo    "                   <td>$bermWaterSamplesTaken</td>";
                 echo    "                   <td>$plantProcessDiscussion</td>";
-                echo    "                   <td>$operationalTargets</td>";
-                echo    "                   <td>$recyclePumps</td>";
+                echo    "                   <td>$operationalTargets</td>"; 
+                echo    "                   <td>$overRidesOrSafetiesBypassed</td>"; 
                 echo    "                   <td>$productionTankLevel</td>";
                 echo    "               </tr>";
                 echo    "           </tbody>";
@@ -189,7 +211,8 @@
                 echo    "                   <th>Regulatory Requirements</th>";
                 echo    "                   <th>Staff Discussion</th>";
                 echo    "                   <th>Weather & Effects On Operations</th>";
-                echo    "                   <th>Permit Extensions/Critical Tasks</th>";                
+                echo    "                   <th>Permit Extensions/Critical Tasks</th>";
+                echo    "                   <th>Date of Log</th>";                               
                 echo    "               </tr>";
                 echo    "           </thead>";
                 echo    "           <tbody>";
@@ -200,6 +223,7 @@
                 echo    "                   <td>$staffDiscussion</td>";
                 echo    "                   <td>$weatherAndEffectsOnOperations</td>";
                 echo    "                   <td>$permitExtensionsCriticalTasks</td>";
+                echo    "                   <td>$dateOfLog</td>";
                 echo    "               </tr>";
                 echo    "           </tbody>";
                 echo    "       </table>";

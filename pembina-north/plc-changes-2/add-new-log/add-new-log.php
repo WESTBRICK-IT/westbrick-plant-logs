@@ -58,7 +58,7 @@
         }
         $remark = addSpacingToRemark($remark);
         
-        $sql = "INSERT INTO plc_changes2 (author, asset, duration, remark, date, time) VALUES ('$author', '$asset', '$duration', '$remark', '$date', '$time')";
+        $sql = "INSERT INTO plc_changes2 (author, asset, duration, remark, date, time, date_of_log, time_of_log) VALUES ('$author', '$asset', '$duration', '$remark', '$date', '$time', '$date', '$time')";
         
         if ($conn->query($sql) === TRUE) {
             // echo "<h1>Article $title submitted successfully! Redirecting to articles page in 5 seconds.</h1>";
