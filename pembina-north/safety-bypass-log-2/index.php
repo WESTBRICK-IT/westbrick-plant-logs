@@ -37,15 +37,15 @@
             die("Connection failed: " . mysqli_connect_error());
         }        
 
-        $query = "SELECT * FROM `safety_bypass_log2` ORDER BY `id` DESC, `author` DESC";
+        $query = "SELECT * FROM `safety_bypass_log2` ORDER BY `new_id` DESC, `author` DESC";
         $result = mysqli_query($conn, $query);
         if (mysqli_num_rows($result) > 0) {                                            
             while($row = mysqli_fetch_assoc($result)) {
                                 
                 $id = $row['id'];    
                 $newID = $row['new_id'];
-                $newID = $newID - 100;
-                if($id <= 112){
+                $newID = $newID - 227;
+                if($id != 0){
                     $newID = $id;
                 }
                 $author = $row['author'];

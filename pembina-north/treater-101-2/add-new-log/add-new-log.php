@@ -48,22 +48,30 @@
         $date = date('Y-m-d');        
         date_default_timezone_set('America/Denver'); 
         $time = date('H:i:s', time());
+        $dateOfLog = (string)$date . " " . (string)$time;
+        $remark = $_POST['remark'];        
+        
         function convertApostrophe($string) { 
             $newString = str_replace("'", '`', $string); 
             return $newString; 
         }            
         
-        $author = convertApostrophe($author);        
+        $author = convertApostrophe($author);
+        $remark = convertApostrophe($remark);
+
+        if($pressure == null){
+            $pressure = 'NULL';
+            echo "PRESSURE: " . $pressure . "</h1>";
+        }
         
-        $sql = "INSERT INTO treater_101_2 (author, shift, pressure, temperature, front_water_level, back_water_level, flame_condition, month, day, year, date, time) VALUES ('$author', '$shift', '$pressure', '$temperature', '$frontWaterLevel', '$backWaterLevel', '$flameCondition', '$month', '$day', '$year', '$date', '$time')";
-        
-        if ($conn->query($sql) === TRUE) {
-            
+        $sql = "INSERT INTO treater_101_2 (author, shift, pressure, temperature, front_water_level, back_water_level, flame_condition, month, day, year, date, time, remark, date_of_log) VALUES ('$author', '$shift', '$pressure', '$temperature', '$frontWaterLevel', '$backWaterLevel', '$flameCondition', '$month', '$day', '$year', '$date', '$time', '$remark', '$dateOfLog')";
+                        
+
+        if ($conn->query($sql) === TRUE) {            
             echo "<div class='westbrick-success-svg-container'>";
             echo    "<img class='westbrick-success-svg' src='../../../images/plant-log-submitted-successfully.svg' alt='WESTBRICK SUCCESS SVG'>";
             echo    "<button class='home-button' type='button' onclick='window.location.href=`../`;'>Home</button>";
-            echo "</div>";
-            
+            echo "</div>";              
         } else {
             echo "<div class='westbrick-success-svg-container'>";
             echo    "Error: " . $sql . "<br>" . $conn->error;

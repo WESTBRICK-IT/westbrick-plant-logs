@@ -29,6 +29,14 @@
             $newString = str_replace("`", "'", $string); 
             return $newString; 
         }
+        function booleanToNightDay($boolean) {
+            if($boolean == 1) {
+                $boolean = "Day";
+            } else if($boolean == 0) {
+                $boolean = "Night";
+            }
+            return $boolean;
+        }
         // Connect to the database
         $conn = mysqli_connect("localhost", "cbarber", "!!!Dr0w554p!!!", "WestbrickPlantLogDB");
 
@@ -37,12 +45,17 @@
             die("Connection failed: " . mysqli_connect_error());
         }        
 
-        $query = "SELECT * FROM `volcano_2` ORDER BY `id` DESC, `author` DESC";
+        $query = "SELECT * FROM `volcano_2` ORDER BY `new_id` DESC, `author` DESC";
         $result = mysqli_query($conn, $query);
         if (mysqli_num_rows($result) > 0) {                                            
             while($row = mysqli_fetch_assoc($result)) {
                                 
-                $id = $row['id'];                
+                $id = $row['id'];    
+                $newID = $row['new_id'];
+                $newID = $newID + 4;                
+                if($id != 0){
+                    $newID = $id;
+                }                
                 $author = $row['author'];
                 $shift = $row['shift'];
                 $surgeTankTemperature = $row['surge_tank_temperature'];
@@ -57,14 +70,18 @@
                 $year = $row['year'];
                 $date = $row['date'];
                 $time = $row['time'];
+                $dateOfLog = $row['date_of_log'];
+                $remark = $row['remark'];
+
+                $shift = booleanToNightDay($shift);
                
                 echo    "<div class='plant-log'>";
-                echo    "   <h1 class='log-title'>Plant Log #$id</h1>";
+                echo    "   <h1 class='log-title'>Plant Log #$newID</h1>";
                 echo    "   <div class='table-wrapper'>";
                 echo    "       <table class='sub-menu-table'>";
                 echo    "           <thead>";
                 echo    "               <tr>";
-                echo    "                   <th>Date</th>";
+                echo    "                   <th>Date of Log</th>";
                 echo    "                   <th>Time</th>";                
                 echo    "                   <th>Message ID</th>";
                 echo    "                   <th>Author</th>";
@@ -72,14 +89,14 @@
                 echo    "                   <th>Surge Tank Temperature</th>";
                 echo    "                   <th>Surge Tank Pressure</th>";
                 echo    "                   <th>Surge Tank Level</th>";
-                echo    "                   <th>Outlet Temperature</th>";
+                echo    "                   <th>Outlet Temperature</th>";                
                 echo    "               </tr>";
                 echo    "           </thead>";
                 echo    "           <tbody>";
                 echo    "               <tr>";
-                echo    "                   <td>$date</td>";
+                echo    "                   <td>$dateOfLog</td>";
                 echo    "                   <td>$time</td>";
-                echo    "                   <td>$id</td>";
+                echo    "                   <td>$newID</td>";
                 echo    "                   <td>$author</td>";
                 echo    "                   <td>$shift</td>";
                 echo    "                   <td>$surgeTankTemperature</td>";
@@ -97,7 +114,9 @@
                 echo    "                   <th>Flame Condition</th>";
                 echo    "                   <th>Month</th>";
                 echo    "                   <th>Day</th>";
-                echo    "                   <th>Year</th>";                
+                echo    "                   <th>Year</th>";
+                echo    "                   <th>Date of Database Insertion</th>";
+                echo    "                   <th>Time of Database Insertion</th>";
                 echo    "               <tr>";
                 echo    "           </thead>";
                 echo    "           <tbody>";
@@ -107,10 +126,15 @@
                 echo    "                   <td>$flameCondition</td>";
                 echo    "                   <td>$month</td>";
                 echo    "                   <td>$day</td>";
-                echo    "                   <td>$year</td>";                
+                echo    "                   <td>$year</td>"; 
+                echo    "                   <td>$date</td>"; 
+                echo    "                   <td>$time</td>"; 
                 echo    "               </tr>";
                 echo    "           </tbody>";
-                echo    "       </table>";                
+                echo    "       </table>";  
+                echo    "       <div class='plant-log-remarks'>";
+                echo    "           <p>$remark</p>";                
+                echo    "       </div>";               
                 echo    "   </div>"; 
                 echo    "</div>";
             }

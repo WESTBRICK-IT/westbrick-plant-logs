@@ -50,6 +50,7 @@
         $date = date('Y-m-d');        
         date_default_timezone_set('America/Denver'); 
         $time = date('H:i:s', time());
+        $dateOfLog = (string)$date . " " . (string)$time;
         function convertApostrophe($string) { 
             $newString = str_replace("'", '`', $string); 
             return $newString; 
@@ -58,7 +59,7 @@
         $author = convertApostrophe($author);
         $shift = convertApostrophe($shift);                
         
-        $sql = "INSERT INTO volcano_2 (author, shift, surge_tank_temperature, surge_tank_pressure, surge_tank_level, outlet_temperature, stack_temperature, pump_pressure, flame_condition, month, day, year, date, time) VALUES ('$author', '$shift', '$surgeTankTemperature', '$surgeTankPressure', '$surgeTankLevel', '$outletTemperature', '$stackTemperature', '$pumpPressure', '$flameCondition', '$month', '$day', '$year', '$date', '$time')";
+        $sql = "INSERT INTO volcano_2 (author, shift, surge_tank_temperature, surge_tank_pressure, surge_tank_level, outlet_temperature, stack_temperature, pump_pressure, flame_condition, month, day, year, date, time, date_of_log) VALUES ('$author', '$shift', '$surgeTankTemperature', '$surgeTankPressure', '$surgeTankLevel', '$outletTemperature', '$stackTemperature', '$pumpPressure', '$flameCondition', '$month', '$day', '$year', '$date', '$time', '$dateOfLog')";
         
         if ($conn->query($sql) === TRUE) {
             // echo "<h1>Article $title submitted successfully! Redirecting to articles page in 5 seconds.</h1>";
