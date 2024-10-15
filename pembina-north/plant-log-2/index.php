@@ -8,13 +8,22 @@
     <link rel="stylesheet" href="../../style/style.css">
     <script src="../../script/sub-menu-script.js" defer></script>    
     <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <script type="text/javascript" src="../../script/jquery.js" defer></script>
+    <script src="../../script/loading.js" defer></script>
 </head>
-<body>
+<body>  
+    <div class="preloader">
+        <div class="preloader_inner">
+            <div class="loading_icon">
+                <img src="../../images/loader.svg" alt="gas-oil-trading-loader">
+            </div>
+        </div>
+    </div>   
     <a href="../"><img class="main-title" src="../../images/westbrick-plant-logs.svg" alt="Westbrick Plant Logs"></a>
-    <h1 class="sub-page-title">Pembina North - Plant Log 2</h1>
-    <button class="button" onclick="window.location.href='./add-new-log/'" type="button">Add New Log</button>
+    <h1 class="sub-page-title">Pembina North - Plant Log 2</h1>    
+    <button class="button" onclick="window.location.href='./add-new-log/'" type="button">Add New Log</button>    
     <button class="button go-back-button" type="button">Go back</button>
-    
+       
     <?php
         $allowedIPs = array('206.174.198.58', '206.174.198.59', '50.99.132.206', '170.203.211.167'); // Define the list of allowed IP addresses
 
@@ -120,29 +129,21 @@
                 echo    "       <table class='sub-menu-table'>";
                 echo    "           <thead>";
                 echo    "               <tr>";
-                echo    "                   <th>Date of Database Insertion</th>";
-                echo    "                   <th>Time of Database Insertion</th>";                
                 echo    "                   <th>Message ID</th>";
+                echo    "                   <th>Date of Log</th>";
                 echo    "                   <th>Author</th>";
                 echo    "                   <th>Shift</th>";
-                echo    "                   <th>Operators</th>";
-                // echo    "                   <th>Operator 1</th>";
-                // echo    "                   <th>Operator 2</th>";
-                // echo    "                   <th>Operator 3</th>";
+                echo    "                   <th>Operators</th>";                
                 echo    "                   <th>Shift Handover Meeting</th>";
                 echo    "               </tr>";
                 echo    "           </thead>";
                 echo    "           <tbody>";
                 echo    "               <tr>";
-                echo    "                   <td>$date</td>";
-                echo    "                   <td>$time</td>";
                 echo    "                   <td>$id</td>";
+                echo    "                   <td>$dateOfLog</td>";
                 echo    "                   <td>$author</td>";
                 echo    "                   <td>$shift</td>";
-                echo    "                   <td>$operators</td>";
-                // echo    "                   <td>$operator1</td>";
-                // echo    "                   <td>$operator2</td>";
-                // echo    "                   <td>$operator3</td>";
+                echo    "                   <td>$operators</td>";                
                 echo    "                   <td>$shiftHandoverMeeting</td>";
                 echo    "               </tr>";
                 echo    "           </tbody>";
@@ -211,8 +212,9 @@
                 echo    "                   <th>Regulatory Requirements</th>";
                 echo    "                   <th>Staff Discussion</th>";
                 echo    "                   <th>Weather & Effects On Operations</th>";
-                echo    "                   <th>Permit Extensions/Critical Tasks</th>";
-                echo    "                   <th>Date of Log</th>";                               
+                echo    "                   <th>Permit Extensions/Critical Tasks</th>";                
+                echo    "                   <th>Date of Database Insertion</th>";
+                echo    "                   <th>Time of Database Insertion</th>";                            
                 echo    "               </tr>";
                 echo    "           </thead>";
                 echo    "           <tbody>";
@@ -222,8 +224,9 @@
                 echo    "                   <td>$regulatoryRequirements</td>";
                 echo    "                   <td>$staffDiscussion</td>";
                 echo    "                   <td>$weatherAndEffectsOnOperations</td>";
-                echo    "                   <td>$permitExtensionsCriticalTasks</td>";
-                echo    "                   <td>$dateOfLog</td>";
+                echo    "                   <td>$permitExtensionsCriticalTasks</td>";                
+                echo    "                   <td>$date</td>";
+                echo    "                   <td>$time</td>";
                 echo    "               </tr>";
                 echo    "           </tbody>";
                 echo    "       </table>";

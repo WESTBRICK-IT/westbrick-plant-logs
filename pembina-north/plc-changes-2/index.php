@@ -8,8 +8,17 @@
     <link rel="stylesheet" href="../../style/style.css">
     <script src="../../script/sub-menu-script.js" defer></script>    
     <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <script type="text/javascript" src="../../script/jquery.js" defer></script>
+    <script src="../../script/loading.js" defer></script>
 </head>
 <body>
+    <div class="preloader">
+        <div class="preloader_inner">
+            <div class="loading_icon">
+                <img src="../../images/loader.svg" alt="gas-oil-trading-loader">
+            </div>
+        </div>
+    </div> 
     <a href="../"><img class="main-title" src="../../images/westbrick-plant-logs.svg" alt="Westbrick Plant Logs"></a>
     <h1 class="sub-page-title">Pembina North - PLC Changes 2</h1>
     <button class="button" onclick="window.location.href='./add-new-log/'" type="button">Add New Log</button>

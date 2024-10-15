@@ -319,7 +319,33 @@ tr:hover {
     flex-wrap: wrap;
     max-width: 100%;
 }
-
+.preloader {
+    display: block;
+    margin: 0 auto;
+    position: fixed;
+    z-index: 9999;
+    background: #ffffff;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+}
+.preloader_inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 90px;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+}
+.loading_icon img {
+    display: inline-block;
+    max-width: 100%;
+}
 @media screen and (max-width: 1700px) {
     .submission-form input {
         margin-left: 40px;

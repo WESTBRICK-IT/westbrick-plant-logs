@@ -8,8 +8,17 @@
     <link rel="stylesheet" href="../../style/style.css">
     <script src="../../script/sub-menu-script.js" defer></script>    
     <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <script type="text/javascript" src="../../script/jquery.js" defer></script>
+    <script src="../../script/loading.js" defer></script>
 </head>
 <body>
+    <div class="preloader">
+        <div class="preloader_inner">
+            <div class="loading_icon">
+                <img src="../../images/loader.svg" alt="gas-oil-trading-loader">
+            </div>
+        </div>
+    </div> 
     <a href="../"><img class="main-title" src="../../images/westbrick-plant-logs.svg" alt="Westbrick Plant Logs"></a>
     <h1 class="sub-page-title">Pembina North - Hot Oil 2</h1>
     <button class="button" onclick="window.location.href='./add-new-log/'" type="button">Add New Log</button>
@@ -89,12 +98,10 @@
                 echo    "   <div class='table-wrapper'>";
                 echo    "       <table class='sub-menu-table'>";
                 echo    "           <thead>";
-                echo    "               <tr>";
-                echo    "                   <th>Date of Database Insertion</th>";
-                echo    "                   <th>Time of Database Insertion</th>";                
+                echo    "               <tr>";                                
                 echo    "                   <th>Message ID</th>";
+                echo    "                   <th>Date of Log</th>";               
                 echo    "                   <th>Author</th>";
-                echo    "                   <th>Shift</th>";
                 echo    "                   <th>Flow</th>";
                 echo    "                   <th>Inlet Temperature</th>";
                 echo    "                   <th>Outlet Temperature</th>";
@@ -102,12 +109,10 @@
                 echo    "               </tr>";
                 echo    "           </thead>";
                 echo    "           <tbody>";
-                echo    "               <tr>";
-                echo    "                   <td>$date</td>";
-                echo    "                   <td>$time</td>";
+                echo    "               <tr>";                
                 echo    "                   <td>$new_id</td>";
+                echo    "                   <td>$dateOfLog</td>";
                 echo    "                   <td>$author</td>";
-                echo    "                   <td>$shift</td>";
                 echo    "                   <td>$flow</td>";
                 echo    "                   <td>$inletTemperature</td>";
                 echo    "                   <td>$outletTemperature</td>";
@@ -123,7 +128,7 @@
                 echo    "                   <th>Fuel Gas Pressure</th>";
                 echo    "                   <th>Stack Temperature</th>";
                 echo    "                   <th>Air Temperature</th>";
-                echo    "                   <th>Flame Condition</th>";                
+                echo    "                   <th>Flame Condition</th>";                                
                 echo    "               <tr>";
                 echo    "           </thead>";
                 echo    "           <tbody>";
@@ -140,18 +145,22 @@
                 echo    "       <table class='sub-menu-table'>";
                 echo    "           <thead>";
                 echo    "               <tr>";
+                echo    "                   <th>Shift</th>";
                 echo    "                   <th>Month</th>";
                 echo    "                   <th>Day</th>";
-                echo    "                   <th>Year</th>";                
-				echo    "                   <th>Date of Log</th>";                 
+                echo    "                   <th>Year</th>";
+                echo    "                   <th>Date of Database Insertion</th>";
+                echo    "                   <th>Time of Database Insertion</th>";
                 echo    "               </tr>";
                 echo    "           </thead>";
                 echo    "           <tbody>";
                 echo    "               <tr>";
+                echo    "                   <td>$shift</td>";
                 echo    "                   <td>$month</td>";
                 echo    "                   <td>$day</td>";
-                echo    "                   <td>$year</td>";
-				echo    "                   <td>$dateOfLog</td>";                
+                echo    "                   <td>$year</td>";				
+                echo    "                   <td>$date</td>";
+                echo    "                   <td>$time</td>";
                 echo    "               </tr>";
                 echo    "           </tbody>";
                 echo    "       </table>";                                                
