@@ -23,6 +23,7 @@
     <h1 class="sub-page-title">Pembina North - Hot Oil 2</h1>
     <button class="button" onclick="window.location.href='./add-new-log/'" type="button">Add New Log</button>
     <button class="button go-back-button" type="button">Go back</button>
+    
     <?php
         $allowedIPs = array('206.174.198.58', '206.174.198.59', '50.99.132.206', '170.203.211.167'); // Define the list of allowed IP addresses
 
@@ -90,6 +91,7 @@
                 $date = $row['date'];
                 $time = $row['time'];
 				$dateOfLog = $row['date_of_log'];
+
 
                 $shift = booleanToNightDay($shift);
 

@@ -1,0 +1,47 @@
+<!-- Made by Christopher Barber August 2024 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Westbrick Plant Logs - Plant One</title>
+    <link rel="stylesheet" href="../../style/style.css">
+    <script src="../../script/sub-menu-script.js" defer></script>    
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <script type="text/javascript" src="../../script/jquery.js" defer></script>
+    <script src="../../script/loading.js" defer></script>
+</head>
+<body>
+    <div class="preloader">
+        <div class="preloader_inner">
+            <div class="loading_icon">
+                <img src="../../images/loader.svg" alt="gas-oil-trading-loader">
+            </div>
+        </div>
+    </div> 
+    <a href="../"><img class="main-title" src="../../images/westbrick-plant-logs.svg" alt="Westbrick Plant Logs"></a>
+    <h1 class="sub-page-title">Pembina North - Hot Oil 2</h1>
+    <button class="button" onclick="window.location.href='./add-new-log/'" type="button">Add New Log</button>
+    <button class="button go-back-button" type="button">Go back</button>  
+    
+    <form  class="date-database-query-form" action="database-query/database-query.php" method="POST">
+        <h1>Enter Start Date and Time for Database Query</h1>
+        <label class="date-label" for="date-start"> Choose a date:  </label>
+        <input class="date-selection-box" type="date" id="date-start" name="date-start" required>
+
+        <label class="date-label" for="time-start"> Choose a time:  </label>
+        <input class="date-selection-box" type="time" id="time-start" name="time-start" required>
+
+        <h1>Enter End Date and Time for Database Query</h1>
+
+        <label class="date-label" for="date-end"> Choose a date:  </label>
+        <input class="date-selection-box" type="date" id="date-end" name="date-end" required>
+
+        <label class="date-label" for="time-end"> Choose a time:  </label>
+        <input class="date-selection-box" type="time" id="time-end" name="time-end" required>
+
+        <input class="submit-button" type="submit" value="Submit">
+    </form>
+    
+</body>
+</html>

@@ -46,13 +46,16 @@
             die("Connection failed: " . mysqli_connect_error());
         }
 
-        function booleanToNightDay($boolean) {
-            if($boolean == 1) {
-                $boolean = "Day";
-            } else if($boolean == 0) {
-                $boolean = "Night";
+        function booleanToNightDay($shift) {
+            if($shift == 1) {
+                return "Day";
+            }if($shift == null){
+                return null;
             }
-            return $boolean;
+            if($shift == 0) {
+                return "Night";                
+            }       
+            return null;
         }
 
         $query = "SELECT * FROM `treater_101_2` ORDER BY `new_id` DESC, `author` DESC";
@@ -78,9 +81,9 @@
                 $date = $row['date'];
                 $time = $row['time'];
                 $dateOfLog = $row['date_of_log'];  
-                $remark = $row['remark'];
+                $remark = $row['remark'];                  
 
-                $shift = booleanToNightDay($shift);
+                $shift = booleanToNightDay($shift);  
                
                 echo    "<div class='plant-log'>";
                 echo    "   <h1 class='log-title'>Plant Log #$newID</h1>";

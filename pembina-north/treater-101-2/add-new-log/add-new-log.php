@@ -57,14 +57,9 @@
         }            
         
         $author = convertApostrophe($author);
-        $remark = convertApostrophe($remark);
-
-        if($pressure == null){
-            $pressure = 'NULL';
-            echo "PRESSURE: " . $pressure . "</h1>";
-        }
+        $remark = convertApostrophe($remark);        
         
-        $sql = "INSERT INTO treater_101_2 (author, shift, pressure, temperature, front_water_level, back_water_level, flame_condition, month, day, year, date, time, remark, date_of_log) VALUES ('$author', '$shift', '$pressure', '$temperature', '$frontWaterLevel', '$backWaterLevel', '$flameCondition', '$month', '$day', '$year', '$date', '$time', '$remark', '$dateOfLog')";
+        $sql = "INSERT INTO treater_101_2 (author, shift, pressure, temperature, front_water_level, back_water_level, flame_condition, month, day, year, date, time, remark, date_of_log) VALUES ('$author', NULLIF('$shift',''), NULLIF('$pressure',''), NULLIF('$temperature',''), NULLIF('$frontWaterLevel',''), NULLIF('$backWaterLevel',''), '$flameCondition', '$month', NULLIF('$day',''), NULLIF('$year',''), '$date', '$time', '$remark', '$dateOfLog')";
                         
 
         if ($conn->query($sql) === TRUE) {            

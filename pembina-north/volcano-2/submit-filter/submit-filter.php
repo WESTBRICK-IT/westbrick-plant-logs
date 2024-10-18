@@ -22,7 +22,8 @@
     <a href="../"><img class="main-title" src="../../images/westbrick-plant-logs.svg" alt="Westbrick Plant Logs"></a>
     <h1 class="sub-page-title">Pembina North - Volcano 2</h1>
     <button class="button" onclick="window.location.href='./add-new-log/'" type="button">Add New Log</button>
-    <button class="button go-back-button" type="button">Go back</button>    
+    <button class="button go-back-button" type="button">Go back</button>
+    
     
     <?php
         $allowedIPs = array('206.174.198.58', '206.174.198.59', '50.99.132.206', '170.203.211.167'); // Define the list of allowed IP addresses
@@ -38,19 +39,14 @@
             $newString = str_replace("`", "'", $string); 
             return $newString; 
         }
-        function booleanToNightDay($shift) {
-            if($shift == 1) {
-                return "Day";
-            }if($shift == null){
-                return null;
+        function booleanToNightDay($boolean) {
+            if($boolean == 1) {
+                $boolean = "Day";
+            } else if($boolean == 0) {
+                $boolean = "Night";
             }
-            if($shift == 0) {
-                return "Night";                
-            }       
-            return null;
+            return $boolean;
         }
-
-        
         // Connect to the database
         $conn = mysqli_connect("localhost", "cbarber", "!!!Dr0w554p!!!", "WestbrickPlantLogDB");
 

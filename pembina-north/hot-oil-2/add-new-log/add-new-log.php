@@ -63,8 +63,9 @@
         $flameCondition = convertApostrophe($flameCondition);
         $month = convertApostrophe($month);        
         // finishing this later        
-        
-        $sql = "INSERT INTO hot_oil2 (author, shift, flow, inlet_temperature, outlet_temperature, pump_pressure, surge_tank_pressure, surge_tank_level, fuel_gas_pressure, stack_temperature, air_temperature, flame_condition, month, day, year, date, time, date_of_log) VALUES ('$author', '$shift', '$flow', '$inletTemperature', '$outletTemperature', '$pumpPressure', '$surgeTankPressure', '$surgeTankLevel', '$fuelGasPressure', '$stackTemperature', '$airTemperature', '$flameCondition', '$month', '$day', '$year', '$date', '$time', '$dateOfLog')";
+
+        $sql = "INSERT INTO hot_oil2 (author, shift, flow, inlet_temperature, outlet_temperature, pump_pressure, surge_tank_pressure, surge_tank_level, fuel_gas_pressure, stack_temperature, air_temperature, flame_condition, month, day, year, date, time, date_of_log) ";
+        $sql .= "VALUES ('$author', NULLIF('$shift',''), NULLIF('$flow',''), NULLIF('$inletTemperature',''), NULLIF('$outletTemperature',''), NULLIF('$pumpPressure',''), NULLIF('$surgeTankPressure',''), NULLIF('$surgeTankLevel',''), NULLIF('$fuelGasPressure',''), NULLIF('$stackTemperature',''), NULLIF('$airTemperature',''), '$flameCondition', '$month', NULLIF('$day',''), NULLIF('$year',''), NULLIF('$date',''), NULLIF('$time',''), '$dateOfLog')";
         
         if ($conn->query($sql) === TRUE) {
             // echo "<h1>Article $title submitted successfully! Redirecting to articles page in 5 seconds.</h1>";

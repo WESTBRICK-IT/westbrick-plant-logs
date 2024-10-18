@@ -58,7 +58,10 @@
             $remark = str_replace(["\r", "\n"], "<p></p>", $remark);
             return $remark;
         }
-        $sql = "INSERT INTO np_daily_production2 (author, inlet, sales, lpg, oil, production_month, production_day, production_year, date, time, date_of_log) VALUES ('$author', '$inlet', '$sales', '$lPG', '$oil', '$productionMonth', '$productionDay', '$productionYear', '$date', '$time', '$dateOfLog')";
+
+        $inlet = "";
+
+        $sql = "INSERT INTO np_daily_production2 (author, inlet, sales, lpg, oil, production_month, production_day, production_year, date, time, date_of_log) VALUES ('$author', NULLIF('$inlet',''), NULLIF('$sales',''), NULLIF('$lPG',''), NULLIF('$oil',''), '$productionMonth', NULLIF('$productionDay',''), NULLIF('$productionYear',''), '$date', '$time', '$dateOfLog')";
         
         if ($conn->query($sql) === TRUE) {
             // echo "<h1>Article $title submitted successfully! Redirecting to articles page in 5 seconds.</h1>";
