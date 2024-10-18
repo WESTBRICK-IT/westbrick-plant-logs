@@ -364,6 +364,12 @@ tr:hover {
 .date-selection-box {
     font-size: 22px;
 }
+.showing-logs-display {
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+    align-items: center;    
+}
 @media screen and (max-width: 1700px) {
     .submission-form input {
         margin-left: 40px;

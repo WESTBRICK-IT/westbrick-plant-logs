@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Westbrick Plant Logs - Plant One</title>
+    <title>Westbrick Plant Logs - Pembina North - Hot Oil 2</title>
     <link rel="stylesheet" href="../../style/style.css">
     <script src="../../script/sub-menu-script.js" defer></script>    
     <link rel="icon" href="../../favicon.ico" type="image/x-icon">
@@ -67,7 +67,7 @@
                 // The new ID is autoincremented, the old ID are missing some so if the new id and old id aren't equal use the old ID, the new ID will be used for new logs
                 if($new_id != $id){
                     // If the id is 0 that means it's a new_ID so display that, if not display the old ID
-                    if($id == 0){                        
+                    if($id == 0){
                     }else{
                         $new_id = $id;
                     }                    
