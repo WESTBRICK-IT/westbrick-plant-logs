@@ -67,7 +67,7 @@
 
         $query = "  SELECT * FROM `hot_oil2`                     
                     WHERE `log_date` BETWEEN STR_TO_DATE('$startDateTime','%Y-%m-%d %H:%i') AND STR_TO_DATE('$endDateTime','%Y-%m-%d %H:%i')                    
-                    ORDER BY `new_id` DESC, `author` DESC";
+                    ORDER BY `new_id` DESC";
         $result = mysqli_query($conn, $query);
         if (mysqli_num_rows($result) > 0) {                                            
             while($row = mysqli_fetch_assoc($result)) {

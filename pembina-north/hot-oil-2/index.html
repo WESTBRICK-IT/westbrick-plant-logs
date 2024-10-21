@@ -24,15 +24,21 @@
     <button class="button" onclick="window.location.href='./add-new-log/'" type="button">Add New Log</button>
     <button class="button go-back-button" type="button">Go back</button>  
     
-    <form  class="date-database-query-form" action="database-query/database-query.php" method="POST">                
-        <input class="date-selection-box" type="date" id="date-start" name="date-start">
-        
-        <input class="date-selection-box" type="date" id="date-end" name="date-end">
+    <form  class="date-database-query-form" action="database-query/database-query.php" method="POST">        
+        <div class="start-date-select">
+            <label class="date-label" for="date-start"> Start Date: </label>
+            <input class="date-selection-box" type="date" id="date-start" name="date-start" required>
+        </div>
+
+        <div class="end-date-select">
+            <label class="date-label" for="date-end"> End Date: </label>
+            <input class="date-selection-box" type="date" id="date-end" name="date-end" required>
+        </div>
 
         <!-- <label class="date-label" for="time-end"> Choose a time:  </label>
         <input class="date-selection-box" type="time" id="time-end" name="time-end" required> -->
 
-        <input class="submit-button" type="submit" value="Start Database Query">
+        <input class="database-query-button" type="submit" value="Start Database Query">
     </form>
     
 </body>

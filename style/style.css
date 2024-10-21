@@ -350,13 +350,7 @@ tr:hover {
 .date-database-query-form {
     text-align: center;
     display: block;
-    margin: 20px auto;
-    border-style: solid;
-    border-color: rgb( 220, 164, 19);
-    border-radius: 10px;
-    max-width: 70%;
-    padding: 15px;
-    background-color: rgba(255, 255, 255, 0.6);
+    margin: 20px auto;    
 }
 .date-label {
     font-size: 22px;
@@ -369,6 +363,27 @@ tr:hover {
     margin: 0 auto;
     display: block;
     align-items: center;    
+}
+.start-date-select {
+    margin: 20px auto;
+}
+.end-date-select {
+    margin: 20px auto;
+}
+.database-query-button {
+    display: block;
+    margin: 0 auto;
+    width: 260px;
+    height: 40px;
+    margin-top: 40px;
+    font-size: 23px;
+    margin-bottom: 40px;
+    background-color: rgb( 220, 164, 19);
+    border-radius: 8px;
+    font-weight: bolder; 
+}
+.database-query-button:hover {
+    background-color: rgb(250, 194, 49);
 }
 @media screen and (max-width: 1700px) {
     .submission-form input {
