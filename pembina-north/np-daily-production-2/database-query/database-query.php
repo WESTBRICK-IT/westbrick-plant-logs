@@ -53,7 +53,7 @@
         $startDateTime = $startDate . " " . $startTime;
         $endDateTime = $endDate . " " . $endTime;
                 
-        echo    "<h1 class=`showing-logs-display`>Showing logs between: $startDateTime and $endDateTime</h1>";        
+        echo    "<h1 class='showing-logs-display'>Showing logs between: $startDateTime and $endDateTime</h1>";        
 
         $query = "  SELECT * FROM `np_daily_production2`                     
                     WHERE `log_date` BETWEEN STR_TO_DATE('$startDateTime','%Y-%m-%d %H:%i') AND STR_TO_DATE('$endDateTime','%Y-%m-%d %H:%i')                    
@@ -65,8 +65,8 @@
                 $id = $row['id'];
                 $newID = $row['new_id'];
                 $newID = $newID + 9;   
-                if($newID != $id){
-                    $new_id = $id;
+                if($id != 0){
+                    $newID = $id;                    
                 }
                 $author = $row['author'];
                 $inlet = $row['inlet'];

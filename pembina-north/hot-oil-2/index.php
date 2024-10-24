@@ -92,7 +92,6 @@
                 $time = $row['time'];
 				$dateOfLog = $row['date_of_log'];
 
-
                 $shift = booleanToNightDay($shift);
 
                 echo    "<div class='plant-log'>";

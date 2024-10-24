@@ -20,7 +20,7 @@
         </div>
     </div> 
     <a href="../"><img class="main-title" src="../../../images/westbrick-plant-logs.svg" alt="Westbrick Plant Logs"></a>
-    <h1 class="sub-page-title">Pembina North - Hot Oil 2</h1>
+    <h1 class="sub-page-title">Pembina North - Plant Log 2</h1>
     <button class="button" onclick="window.location.href='../add-new-log/'" type="button">Add New Log</button>
     <button class="button go-back-button" type="button">Go back</button>
     
@@ -44,9 +44,21 @@
         // Check connection
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
-        }else {
-            
         }
+
+        function booleanToYesNoNA($boolean) {            
+            if($boolean == 1) {
+                $boolean = "Yes";            
+            }elseif($boolean == null) {
+                $boolean = "N/A";
+            }elseif($boolean == "") {
+                $boolean = "N/A";
+            }elseif($boolean == 0) {
+                $boolean = "No";
+            }            
+            return $boolean;
+        }
+
         function booleanToNightDay($boolean) {
             if($boolean == 1) {
                 $boolean = "Day";
@@ -54,7 +66,7 @@
                 $boolean = "Night";
             }
             return $boolean;
-        }        
+        }
 
         $startDate = $_POST['date-start'];
         $startTime = $_POST['time-start'];
@@ -62,121 +74,175 @@
         $endDate = $_POST['date-end'];
         $startDateTime = $startDate . " " . $startTime;
         $endDateTime = $endDate . " " . $endTime;
-                
-        echo    "<h1 class=`showing-logs-display`>Showing logs between: $startDateTime and $endDateTime</h1>";        
+        
 
-        $query = "  SELECT * FROM `hot_oil2`                     
+        echo    "<h1 class='showing-logs-display'>Showing logs between: $startDateTime and $endDateTime</h1>";        
+
+        $query = "  SELECT * FROM `plant_log2`                     
                     WHERE `log_date` BETWEEN STR_TO_DATE('$startDateTime','%Y-%m-%d %H:%i') AND STR_TO_DATE('$endDateTime','%Y-%m-%d %H:%i')                    
-                    ORDER BY `new_id` DESC, `author` DESC";
+                    ORDER BY `new_id` DESC";
+
         $result = mysqli_query($conn, $query);
         if (mysqli_num_rows($result) > 0) {                                            
             while($row = mysqli_fetch_assoc($result)) {
                                 
-                $id = $row['id']; 
+                $id = $row['id'];    
                 $new_id = $row['new_id'];
-                $new_id = $new_id + 8;
-                // The new ID is autoincremented, the old ID are missing some so if the new id and old id aren't equal use the old ID, the new ID will be used for new logs
-                if($new_id != $id){
-                    // If the id is 0 that means it's a new_ID so display that, if not display the old ID
-                    if($id == 0){                        
-                    }else{
-                        $new_id = $id;
-                    }                    
+                if($id == null){
+                    $id = $new_id + 61;
                 }                
-                $author = $row['author'];                
-                $flow = $row['flow'];
-                $inletTemperature = $row['inlet_temperature'];
-                $outletTemperature =  $row['outlet_temperature'];
-                $pumpPressure = $row['pump_pressure'];
-                $surgeTankPressure = $row['surge_tank_pressure'];
-                $surgeTankLevel = $row['surge_tank_level'];
-                $fuelGasPressure = $row['fuel_gas_pressure'];
-                $stackTemperature = $row['stack_temperature'];
-                $airTemperature = $row['air_temperature'];
-                $flameCondition = $row['flame_condition'];
+                $author = $row['author'];
                 $shift = $row['shift'];
-                $month = $row['month'];
-                $day = $row['day'];
-                $year = $row['year'];
-                $remark = $row['remark'];
+                // $operator1 = $row['operator1'];
+                // $operator2 = $row['operator2'];
+                // $operator3 = $row['operator3'];
+                $shiftHandoverMeeting = $row['shift_handover_meeting'];
+                $startOfShiftMeeting = $row['start_of_shift_meeting'];
+                $plantStatus = $row['plant_status'];
+                $equipmentOutage = $row['equipment_outage'];
+                $filterChange = $row['filter_change'];
+                $pigging = $row['pigging'];
+                $recyclePumps = $row['recycle_pumps'];
+                $productionTankLevel = $row['production_tank_level'];
+                $lPG_BulletPeakLevel = $row['lpg_bullet_peak_level'];
+                $lPG_BulletPeakPressure = $row['lpg_bullet_peak_pressure'];
+                $bermWaterSamplesTaken = $row['berm_water_samples_taken'];
+                $plantProcessDiscussion = $row['plant_process_discussion'];
+                $operationalTargets = $row['operational_targets'];                
+                $overRidesOrSafetiesBypassed = $row['overrides'];
+                $upcomingActivities = $row['upcoming_activities'];
+                $hSE_Concerns = $row['hse_concerns'];
+                $regulatoryRequirements = $row['regulatory_requirements'];
+                $staffDiscussion = $row['staff_discussion'];
+                $weatherAndEffectsOnOperations = $row['weather_and_effects_on_operations'];
+                $permitExtensionsCriticalTasks = $row['permit_extensions_critical_tasks'];
+                $remark = $row['remark'];  
+                $dateOfLog = $row['date_of_log'];
                 $date = $row['date'];
                 $time = $row['time'];
-				$dateOfLog = $row['date_of_log'];
-
-
-                $shift = booleanToNightDay($shift);
+                $operators = $row['operators'];
+                $overRidesOrSafetiesBypassed = $row['overrides_or_safeties_bypassed'];
+                $amineConcentration = $row['amine_concentration'];
+                $amineBagFilterChanged = $row['amine_bag_filter_changed'];
+                $glycolRegenFilterChanged = $row['glycol_regen_filter_changed'];
+                
+                $bermWaterSamplesTaken = booleanToYesNoNA($bermWaterSamplesTaken);
+                $plantProcessDiscussion = booleanToYesNoNA($plantProcessDiscussion);
+                $operationalTargets = booleanToYesNoNA($operationalTargets);
+                $upcomingActivities = booleanToYesNoNA($upcomingActivities);
+                $hSE_Concerns = booleanToYesNoNA($hSE_Concerns);
+                $regulatoryRequirements = booleanToYesNoNA($regulatoryRequirements);
+                $staffDiscussion = booleanToYesNoNA($staffDiscussion);
+                $weatherAndEffectsOnOperations = booleanToYesNoNA($weatherAndEffectsOnOperations);
 
                 echo    "<div class='plant-log'>";
-                echo    "   <h1 class='log-title'>Plant Log #$new_id</h1>";
+                echo    "   <h1 class='log-title'>Plant Log #$id</h1>";
                 echo    "   <div class='table-wrapper'>";
                 echo    "       <table class='sub-menu-table'>";
                 echo    "           <thead>";
-                echo    "               <tr>";                                
+                echo    "               <tr>";
                 echo    "                   <th>Message ID</th>";
-                echo    "                   <th>Date of Log</th>";               
+                echo    "                   <th>Date of Log</th>";
                 echo    "                   <th>Author</th>";
-                echo    "                   <th>Flow</th>";
-                echo    "                   <th>Inlet Temperature</th>";
-                echo    "                   <th>Outlet Temperature</th>";
-                echo    "                   <th>Pump Pressure</th>";
+                echo    "                   <th>Shift</th>";
+                echo    "                   <th>Operators</th>";                
+                echo    "                   <th>Shift Handover Meeting</th>";
                 echo    "               </tr>";
                 echo    "           </thead>";
                 echo    "           <tbody>";
-                echo    "               <tr>";                
-                echo    "                   <td>$new_id</td>";
+                echo    "               <tr>";
+                echo    "                   <td>$id</td>";
                 echo    "                   <td>$dateOfLog</td>";
                 echo    "                   <td>$author</td>";
-                echo    "                   <td>$flow</td>";
-                echo    "                   <td>$inletTemperature</td>";
-                echo    "                   <td>$outletTemperature</td>";
-                echo    "                   <td>$pumpPressure</td>";
-                echo    "               </tr>";
-                echo    "           </tbody>";
-                echo    "       </table>";
-                echo    "       <table class='sub-menu-table'>";
-                echo    "           <thead>";
-                echo    "               <tr>";
-                echo    "                   <th>Surge Tank Pressure</th>";
-                echo    "                   <th>Surge Tank Level</th>";
-                echo    "                   <th>Fuel Gas Pressure</th>";
-                echo    "                   <th>Stack Temperature</th>";
-                echo    "                   <th>Air Temperature</th>";
-                echo    "                   <th>Flame Condition</th>";                                
-                echo    "               <tr>";
-                echo    "           </thead>";
-                echo    "           <tbody>";
-                echo    "               <tr>";
-                echo    "                   <td>$surgeTankPressure</td>";
-                echo    "                   <td>$surgeTankLevel</td>";
-                echo    "                   <td>$fuelGasPressure</td>";
-                echo    "                   <td>$stackTemperature</td>";
-                echo    "                   <td>$airTemperature</td>";
-                echo    "                   <td>$flameCondition</td>";                
-                echo    "               </tr>";
-                echo    "           </tbody>";
-                echo    "       </table>";
-                echo    "       <table class='sub-menu-table'>";
-                echo    "           <thead>";
-                echo    "               <tr>";
-                echo    "                   <th>Shift</th>";
-                echo    "                   <th>Month</th>";
-                echo    "                   <th>Day</th>";
-                echo    "                   <th>Year</th>";
-                echo    "                   <th>Date of Database Insertion</th>";
-                echo    "                   <th>Time of Database Insertion</th>";
-                echo    "               </tr>";
-                echo    "           </thead>";
-                echo    "           <tbody>";
-                echo    "               <tr>";
                 echo    "                   <td>$shift</td>";
-                echo    "                   <td>$month</td>";
-                echo    "                   <td>$day</td>";
-                echo    "                   <td>$year</td>";				
+                echo    "                   <td>$operators</td>";                
+                echo    "                   <td>$shiftHandoverMeeting</td>";
+                echo    "               </tr>";
+                echo    "           </tbody>";
+                echo    "       </table>";
+                echo    "       <table class='sub-menu-table'>";
+                echo    "           <thead>";
+                echo    "               <tr>";
+                echo    "                   <th>Start of Shift Meeting</th>";
+                echo    "                   <th>Plant Status</th>";
+                echo    "                   <th>Amine Bag Filter Changed</th>";
+                echo    "                   <th>Glycol Regen Filter Changed</th>";
+                echo    "                   <th>Equipment Outage</th>";
+                echo    "                   <th>Filter Change</th>";
+                echo    "                   <th>Pigging</th>";
+                echo    "                   <th>Recycle Pumps</th>";
+                echo    "                   <th>Amine Concentration</th>";
+                echo    "                   <th>Roustabout Utilization</th>";                
+                echo    "               <tr>";
+                echo    "           </thead>";
+                echo    "           <tbody>";
+                echo    "               <tr>";
+                echo    "                   <td>$startOfShiftMeeting</td>";
+                echo    "                   <td>$plantStatus</td>";
+                echo    "                   <td>$amineBagFilterChanged</td>";
+                echo    "                   <td>$glycolRegenFilterChanged</td>";
+                echo    "                   <td>$equipmentOutage</td>";
+                echo    "                   <td>$filterChange</td>";
+                echo    "                   <td>$pigging</td>";
+                echo    "                   <td>$recyclePumps</td>";
+                echo    "                   <td>$amineConcentration</td>";
+                echo    "                   <td>$roustaboutUtilization</td>";                
+                echo    "               </tr>";
+                echo    "           </tbody>";
+                echo    "       </table>";
+                echo    "       <table class='sub-menu-table'>";
+                echo    "           <thead>";
+                echo    "               <tr>";
+                echo    "                   <th>LPG Bullet Peak Level</th>";
+                echo    "                   <th>LPG Bullet Peak Pressure</th>";
+                echo    "                   <th>Berm Water Samples Taken</th>";
+                echo    "                   <th>Plant Process Discussion</th>";
+                echo    "                   <th>Operational Targets</th>";                          
+                echo    "                   <th>Over-rides or Safeties Bypassed</th>"; 
+                echo    "                   <th>Production Tank Level</th>";
+                echo    "               </tr>";
+                echo    "           </thead>";
+                echo    "           <tbody>";
+                echo    "               <tr>";
+                echo    "                   <td>$lPG_BulletPeakLevel</td>";
+                echo    "                   <td>$lPG_BulletPeakPressure</td>";
+                echo    "                   <td>$bermWaterSamplesTaken</td>";
+                echo    "                   <td>$plantProcessDiscussion</td>";
+                echo    "                   <td>$operationalTargets</td>"; 
+                echo    "                   <td>$overRidesOrSafetiesBypassed</td>";
+                echo    "                   <td>$productionTankLevel</td>";
+                echo    "               </tr>";
+                echo    "           </tbody>";
+                echo    "       </table>";
+                echo    "       <table class='sub-menu-table'>";
+                echo    "           <thead>";
+                echo    "               <tr>";
+                echo    "                   <th>Upcoming Activities</th>";
+                echo    "                   <th>HSE Concerns</th>";
+                echo    "                   <th>Regulatory Requirements</th>";
+                echo    "                   <th>Staff Discussion</th>";
+                echo    "                   <th>Weather & Effects On Operations</th>";
+                echo    "                   <th>Permit Extensions/Critical Tasks</th>";                
+                echo    "                   <th>Date of Database Insertion</th>";
+                echo    "                   <th>Time of Database Insertion</th>";                            
+                echo    "               </tr>";
+                echo    "           </thead>";
+                echo    "           <tbody>";
+                echo    "               <tr>";
+                echo    "                   <td>$upcomingActivities</td>";
+                echo    "                   <td>$hSE_Concerns</td>";
+                echo    "                   <td>$regulatoryRequirements</td>";
+                echo    "                   <td>$staffDiscussion</td>";
+                echo    "                   <td>$weatherAndEffectsOnOperations</td>";
+                echo    "                   <td>$permitExtensionsCriticalTasks</td>";                
                 echo    "                   <td>$date</td>";
                 echo    "                   <td>$time</td>";
                 echo    "               </tr>";
                 echo    "           </tbody>";
-                echo    "       </table>";                                                
+                echo    "       </table>";
+                echo    "       <div class='plant-log-remarks'>";
+                echo    "           <p>$remark</p>";                
+                echo    "       </div>";                
                 echo    "   </div>"; 
                 echo    "</div>";
             }

@@ -54,7 +54,7 @@
                 $id = $row['id'];
                 $newID = $row['new_id'];
                 $newID = $newID + 9;   
-                if($newID != $id){
+                if($id != 0){
                     $new_id = $id;
                 }
                 $author = $row['author'];

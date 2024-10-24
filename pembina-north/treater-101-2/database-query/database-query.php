@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Westbrick Plant Logs - Pembina North - Hot Oil 2</title>
+    <title>Westbrick Plant Logs - Pembina North - Treater 101 2</title>
     <link rel="stylesheet" href="../../../style/style.css">
     <script src="../../../script/sub-menu-script.js" defer></script>    
     <link rel="icon" href="../../../favicon.ico" type="image/x-icon">
@@ -20,7 +20,7 @@
         </div>
     </div> 
     <a href="../"><img class="main-title" src="../../../images/westbrick-plant-logs.svg" alt="Westbrick Plant Logs"></a>
-    <h1 class="sub-page-title">Pembina North - Hot Oil 2</h1>
+    <h1 class="sub-page-title">Pembina North - Treater 101 2</h1>
     <button class="button" onclick="window.location.href='../add-new-log/'" type="button">Add New Log</button>
     <button class="button go-back-button" type="button">Go back</button>
     
@@ -63,120 +63,91 @@
         $startDateTime = $startDate . " " . $startTime;
         $endDateTime = $endDate . " " . $endTime;
                 
-        echo    "<h1 class=`showing-logs-display`>Showing logs between: $startDateTime and $endDateTime</h1>";        
+        echo    "<h1 class='showing-logs-display'>Showing logs between: $startDateTime and $endDateTime</h1>";        
 
-        $query = "  SELECT * FROM `hot_oil2`                     
+        $query = "  SELECT * FROM `treater_101_2`                     
                     WHERE `log_date` BETWEEN STR_TO_DATE('$startDateTime','%Y-%m-%d %H:%i') AND STR_TO_DATE('$endDateTime','%Y-%m-%d %H:%i')                    
                     ORDER BY `new_id` DESC, `author` DESC";
         $result = mysqli_query($conn, $query);
         if (mysqli_num_rows($result) > 0) {                                            
             while($row = mysqli_fetch_assoc($result)) {
                                 
-                $id = $row['id']; 
-                $new_id = $row['new_id'];
-                $new_id = $new_id + 8;
-                // The new ID is autoincremented, the old ID are missing some so if the new id and old id aren't equal use the old ID, the new ID will be used for new logs
-                if($new_id != $id){
-                    // If the id is 0 that means it's a new_ID so display that, if not display the old ID
-                    if($id == 0){                        
-                    }else{
-                        $new_id = $id;
-                    }                    
-                }                
-                $author = $row['author'];                
-                $flow = $row['flow'];
-                $inletTemperature = $row['inlet_temperature'];
-                $outletTemperature =  $row['outlet_temperature'];
-                $pumpPressure = $row['pump_pressure'];
-                $surgeTankPressure = $row['surge_tank_pressure'];
-                $surgeTankLevel = $row['surge_tank_level'];
-                $fuelGasPressure = $row['fuel_gas_pressure'];
-                $stackTemperature = $row['stack_temperature'];
-                $airTemperature = $row['air_temperature'];
-                $flameCondition = $row['flame_condition'];
+                $id = $row['id'];    
+                $newID = $row['new_id'];                
+                if($id != 0){
+                    $newID = $id;
+                }               
+                $author = $row['author'];
                 $shift = $row['shift'];
+                $pressure = $row['pressure'];
+                $temperature = $row['temperature'];
+                $frontWaterLevel = $row['front_water_level'];
+                $backWaterLevel = $row['back_water_level'];
+                $flameCondition = $row['flame_condition'];
                 $month = $row['month'];
                 $day = $row['day'];
                 $year = $row['year'];
-                $remark = $row['remark'];
                 $date = $row['date'];
                 $time = $row['time'];
-				$dateOfLog = $row['date_of_log'];
+                $dateOfLog = $row['date_of_log'];  
+                $remark = $row['remark'];                  
 
-
-                $shift = booleanToNightDay($shift);
-
+                $shift = booleanToNightDay($shift);  
+               
                 echo    "<div class='plant-log'>";
-                echo    "   <h1 class='log-title'>Plant Log #$new_id</h1>";
+                echo    "   <h1 class='log-title'>Plant Log #$newID</h1>";
                 echo    "   <div class='table-wrapper'>";
                 echo    "       <table class='sub-menu-table'>";
                 echo    "           <thead>";
-                echo    "               <tr>";                                
+                echo    "               <tr>";
                 echo    "                   <th>Message ID</th>";
-                echo    "                   <th>Date of Log</th>";               
+                echo    "                   <th>Date of Log</th>";   
                 echo    "                   <th>Author</th>";
-                echo    "                   <th>Flow</th>";
-                echo    "                   <th>Inlet Temperature</th>";
-                echo    "                   <th>Outlet Temperature</th>";
-                echo    "                   <th>Pump Pressure</th>";
+                echo    "                   <th>Pressure</th>";
+                echo    "                   <th>Temperature</th>";    
+                echo    "                   <th>Front Water Level</th>";
+                echo    "                   <th>Back Water Level</th>";                               
                 echo    "               </tr>";
                 echo    "           </thead>";
                 echo    "           <tbody>";
-                echo    "               <tr>";                
-                echo    "                   <td>$new_id</td>";
-                echo    "                   <td>$dateOfLog</td>";
+                echo    "               <tr>";
+                echo    "                   <td>$newID</td>";
+                echo    "                   <td>$dateOfLog</td>"; 
                 echo    "                   <td>$author</td>";
-                echo    "                   <td>$flow</td>";
-                echo    "                   <td>$inletTemperature</td>";
-                echo    "                   <td>$outletTemperature</td>";
-                echo    "                   <td>$pumpPressure</td>";
+                echo    "                   <td>$pressure</td>";
+                echo    "                   <td>$temperature</td>";
+                echo    "                   <td>$frontWaterLevel</td>";
+                echo    "                   <td>$backWaterLevel</td>";                
                 echo    "               </tr>";
                 echo    "           </tbody>";
                 echo    "       </table>";
                 echo    "       <table class='sub-menu-table'>";
                 echo    "           <thead>";
                 echo    "               <tr>";
-                echo    "                   <th>Surge Tank Pressure</th>";
-                echo    "                   <th>Surge Tank Level</th>";
-                echo    "                   <th>Fuel Gas Pressure</th>";
-                echo    "                   <th>Stack Temperature</th>";
-                echo    "                   <th>Air Temperature</th>";
-                echo    "                   <th>Flame Condition</th>";                                
-                echo    "               <tr>";
-                echo    "           </thead>";
-                echo    "           <tbody>";
-                echo    "               <tr>";
-                echo    "                   <td>$surgeTankPressure</td>";
-                echo    "                   <td>$surgeTankLevel</td>";
-                echo    "                   <td>$fuelGasPressure</td>";
-                echo    "                   <td>$stackTemperature</td>";
-                echo    "                   <td>$airTemperature</td>";
-                echo    "                   <td>$flameCondition</td>";                
-                echo    "               </tr>";
-                echo    "           </tbody>";
-                echo    "       </table>";
-                echo    "       <table class='sub-menu-table'>";
-                echo    "           <thead>";
-                echo    "               <tr>";
+                echo    "                   <th>Flame Condition</th>";
                 echo    "                   <th>Shift</th>";
                 echo    "                   <th>Month</th>";
                 echo    "                   <th>Day</th>";
                 echo    "                   <th>Year</th>";
                 echo    "                   <th>Date of Database Insertion</th>";
-                echo    "                   <th>Time of Database Insertion</th>";
-                echo    "               </tr>";
+                echo    "                   <th>Time of Database Insertion</th>"; 
+                echo    "               <tr>";
                 echo    "           </thead>";
                 echo    "           <tbody>";
                 echo    "               <tr>";
+                echo    "                   <td>$flameCondition</td>";
                 echo    "                   <td>$shift</td>";
                 echo    "                   <td>$month</td>";
                 echo    "                   <td>$day</td>";
-                echo    "                   <td>$year</td>";				
+                echo    "                   <td>$year</td>";  
                 echo    "                   <td>$date</td>";
-                echo    "                   <td>$time</td>";
+                echo    "                   <td>$time</td>";              
                 echo    "               </tr>";
                 echo    "           </tbody>";
-                echo    "       </table>";                                                
+                echo    "       </table>";  
+                echo    "       <div class='plant-log-remarks'>";
+                echo    "           <p>$remark</p>";                
+                echo    "       </div>";                               
                 echo    "   </div>"; 
                 echo    "</div>";
             }

@@ -69,7 +69,7 @@
         }
         
 
-        $query = "SELECT * FROM `westbrick_plant_log1` ORDER BY `new_id` DESC, `author` DESC";
+        $query = "SELECT * FROM `plant_log2` ORDER BY `new_id` DESC, `author` DESC";
         $result = mysqli_query($conn, $query);
         if (mysqli_num_rows($result) > 0) {                                            
             while($row = mysqli_fetch_assoc($result)) {

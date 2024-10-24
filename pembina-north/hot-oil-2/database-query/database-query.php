@@ -63,7 +63,7 @@
         $startDateTime = $startDate . " " . $startTime;
         $endDateTime = $endDate . " " . $endTime;
                 
-        echo    "<h1 class=`showing-logs-display`>Showing logs between: $startDateTime and $endDateTime</h1>";        
+        echo    "<h1 class='showing-logs-display'>Showing logs between: $startDateTime and $endDateTime</h1>";        
 
         $query = "  SELECT * FROM `hot_oil2`                     
                     WHERE `log_date` BETWEEN STR_TO_DATE('$startDateTime','%Y-%m-%d %H:%i') AND STR_TO_DATE('$endDateTime','%Y-%m-%d %H:%i')                    
