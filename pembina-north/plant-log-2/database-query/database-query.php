@@ -62,6 +62,8 @@
         function booleanToNightDay($boolean) {
             if($boolean == 1) {
                 $boolean = "Day";
+            }else if($boolean == null){
+                $boolean = "";
             } else if($boolean == 0) {
                 $boolean = "Night";
             }
@@ -73,13 +75,13 @@
         $endTime = $_POST['time-end'];
         $endDate = $_POST['date-end'];
         $startDateTime = $startDate . " " . $startTime;
-        $endDateTime = $endDate . " " . $endTime;
+        $endDateTime = $endDate . " " . $endTime;      
         
-
         echo    "<h1 class='showing-logs-display'>Showing logs between: $startDateTime and $endDateTime</h1>";        
 
         $query = "  SELECT * FROM `plant_log2`                     
-                    WHERE `log_date` BETWEEN STR_TO_DATE('$startDateTime','%Y-%m-%d %H:%i') AND STR_TO_DATE('$endDateTime','%Y-%m-%d %H:%i')                    
+                    WHERE `log_date` BETWEEN STR_TO_DATE('$startDateTime', '%Y-%m-%d %H:%i') 
+                    AND DATE_ADD(STR_TO_DATE('$endDateTime', '%Y-%m-%d %H:%i'), INTERVAL 1 DAY)                    
                     ORDER BY `new_id` DESC";
 
         $result = mysqli_query($conn, $query);

@@ -50,6 +50,8 @@
         function booleanToNightDay($boolean) {
             if($boolean == 1) {
                 $boolean = "Day";
+            }else if($boolean == null){
+                $boolean = "";
             } else if($boolean == 0) {
                 $boolean = "Night";
             }
@@ -65,8 +67,9 @@
                 
         echo    "<h1 class='showing-logs-display'>Showing logs between: $startDateTime and $endDateTime</h1>";        
 
-        $query = "  SELECT * FROM `hot_oil2`                     
-                    WHERE `log_date` BETWEEN STR_TO_DATE('$startDateTime','%Y-%m-%d %H:%i') AND STR_TO_DATE('$endDateTime','%Y-%m-%d %H:%i')                    
+        $query = "  SELECT * FROM `plant_log2`                     
+                    WHERE `log_date` BETWEEN STR_TO_DATE('$startDateTime', '%Y-%m-%d %H:%i') 
+                    AND DATE_ADD(STR_TO_DATE('$endDateTime', '%Y-%m-%d %H:%i'), INTERVAL 1 DAY)                    
                     ORDER BY `new_id` DESC";
         $result = mysqli_query($conn, $query);
         if (mysqli_num_rows($result) > 0) {                                            
@@ -78,7 +81,7 @@
                 // The new ID is autoincremented, the old ID are missing some so if the new id and old id aren't equal use the old ID, the new ID will be used for new logs
                 if($new_id != $id){
                     // If the id is 0 that means it's a new_ID so display that, if not display the old ID
-                    if($id == 0){                        
+                    if($id == 0 || $id == null){                        
                     }else{
                         $new_id = $id;
                     }                    
@@ -176,7 +179,10 @@
                 echo    "                   <td>$time</td>";
                 echo    "               </tr>";
                 echo    "           </tbody>";
-                echo    "       </table>";                                                
+                echo    "       </table>";   
+                echo    "       <div>";   
+                echo    "           <p>$remark</p>";                
+                echo    "       </div>";                             
                 echo    "   </div>"; 
                 echo    "</div>";
             }

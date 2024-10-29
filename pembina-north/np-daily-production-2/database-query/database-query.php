@@ -56,8 +56,9 @@
         echo    "<h1 class='showing-logs-display'>Showing logs between: $startDateTime and $endDateTime</h1>";        
 
         $query = "  SELECT * FROM `np_daily_production2`                     
-                    WHERE `log_date` BETWEEN STR_TO_DATE('$startDateTime','%Y-%m-%d %H:%i') AND STR_TO_DATE('$endDateTime','%Y-%m-%d %H:%i')                    
-                    ORDER BY `new_id` DESC, `author` DESC";
+                    WHERE `log_date` BETWEEN STR_TO_DATE('$startDateTime', '%Y-%m-%d %H:%i') 
+                    AND DATE_ADD(STR_TO_DATE('$endDateTime', '%Y-%m-%d %H:%i'), INTERVAL 1 DAY)                    
+                    ORDER BY `new_id` DESC";
         $result = mysqli_query($conn, $query);
         if (mysqli_num_rows($result) > 0) {                                            
             while($row = mysqli_fetch_assoc($result)) {

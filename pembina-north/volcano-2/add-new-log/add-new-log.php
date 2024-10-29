@@ -47,7 +47,8 @@
         $month = $_POST['month'];
         $day = $_POST['day'];
         $year = $_POST['year'];        
-        $date = date('Y-m-d');        
+        $date = date('Y-m-d');
+        $remark = $_POST['remark'];
         date_default_timezone_set('America/Denver'); 
         $time = date('H:i:s', time());
         $dateOfLog = (string)$date . " " . (string)$time;
@@ -55,11 +56,11 @@
             $newString = str_replace("'", '`', $string); 
             return $newString; 
         }        
-        
+        $logDate = date('Y-m-d H:i:s');
         $author = convertApostrophe($author);
         $shift = convertApostrophe($shift);                
         
-        $sql = "INSERT INTO volcano_2 (author, shift, surge_tank_temperature, surge_tank_pressure, surge_tank_level, outlet_temperature, stack_temperature, pump_pressure, flame_condition, month, day, year, date, time, date_of_log) VALUES ('$author', NULLIF('$shift',''), NULLIF('$surgeTankTemperature',''), NULLIF('$surgeTankPressure',''), NULLIF('$surgeTankLevel',''), NULLIF('$outletTemperature',''), NULLIF('$stackTemperature',''), NULLIF('$pumpPressure',''), '$flameCondition', '$month', NULLIF('$day',''), NULLIF('$year',''), '$date', '$time', '$dateOfLog')";
+        $sql = "INSERT INTO volcano_2 (author, shift, surge_tank_temperature, surge_tank_pressure, surge_tank_level, outlet_temperature, stack_temperature, pump_pressure, flame_condition, month, day, year, date, time, date_of_log, remark, log_date) VALUES ('$author', NULLIF('$shift',''), NULLIF('$surgeTankTemperature',''), NULLIF('$surgeTankPressure',''), NULLIF('$surgeTankLevel',''), NULLIF('$outletTemperature',''), NULLIF('$stackTemperature',''), NULLIF('$pumpPressure',''), '$flameCondition', '$month', NULLIF('$day',''), NULLIF('$year',''), '$date', '$time', '$dateOfLog', '$remark', '$logDate')";
         
         if ($conn->query($sql) === TRUE) {
             // echo "<h1>Article $title submitted successfully! Redirecting to articles page in 5 seconds.</h1>";

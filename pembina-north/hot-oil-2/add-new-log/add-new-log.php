@@ -50,10 +50,11 @@
         $month = $_POST['month'];
         $day = $_POST['day'];
         $year = $_POST['year'];
+        $remark = $_POST['remark'];
         $date = date('Y-m-d');        
         date_default_timezone_set('America/Denver'); 
         $time = date('H:i:s', time());
-		$dateOfLog = date('Y-m-d') . ' ' . date('H:i:s', time());
+		$dateOfLog = date('Y-m-d') . ' ' . date('H:i:s', time());        
         function convertApostrophe($string) { 
             $newString = str_replace("'", '`', $string); 
             return $newString; 
@@ -61,11 +62,12 @@
         
         $author = convertApostrophe($author);
         $flameCondition = convertApostrophe($flameCondition);
-        $month = convertApostrophe($month);        
+        $month = convertApostrophe($month);  
+        $logDate = date('Y-m-d H:i:s');      
         // finishing this later        
 
-        $sql = "INSERT INTO hot_oil2 (author, shift, flow, inlet_temperature, outlet_temperature, pump_pressure, surge_tank_pressure, surge_tank_level, fuel_gas_pressure, stack_temperature, air_temperature, flame_condition, month, day, year, date, time, date_of_log) ";
-        $sql .= "VALUES ('$author', NULLIF('$shift',''), NULLIF('$flow',''), NULLIF('$inletTemperature',''), NULLIF('$outletTemperature',''), NULLIF('$pumpPressure',''), NULLIF('$surgeTankPressure',''), NULLIF('$surgeTankLevel',''), NULLIF('$fuelGasPressure',''), NULLIF('$stackTemperature',''), NULLIF('$airTemperature',''), '$flameCondition', '$month', NULLIF('$day',''), NULLIF('$year',''), NULLIF('$date',''), NULLIF('$time',''), '$dateOfLog')";
+        $sql = "INSERT INTO hot_oil2 (author, shift, flow, inlet_temperature, outlet_temperature, pump_pressure, surge_tank_pressure, surge_tank_level, fuel_gas_pressure, stack_temperature, air_temperature, flame_condition, month, day, year, date, time, date_of_log, remark, log_date) ";
+        $sql .= "VALUES ('$author', NULLIF('$shift',''), NULLIF('$flow',''), NULLIF('$inletTemperature',''), NULLIF('$outletTemperature',''), NULLIF('$pumpPressure',''), NULLIF('$surgeTankPressure',''), NULLIF('$surgeTankLevel',''), NULLIF('$fuelGasPressure',''), NULLIF('$stackTemperature',''), NULLIF('$airTemperature',''), '$flameCondition', '$month', NULLIF('$day',''), NULLIF('$year',''), NULLIF('$date',''), NULLIF('$time',''), '$dateOfLog', '$remark', '$logDate')";
         
         if ($conn->query($sql) === TRUE) {
             // echo "<h1>Article $title submitted successfully! Redirecting to articles page in 5 seconds.</h1>";
