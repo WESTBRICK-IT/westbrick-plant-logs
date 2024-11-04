@@ -57,8 +57,9 @@
             return $remark;
         }
         $remark = addSpacingToRemark($remark);
+        $logDate = date('Y-m-d H:i:s');
         
-        $sql = "INSERT INTO plc_changes2 (author, asset, duration, remark, date, time, date_of_log, time_of_log) VALUES ('$author', '$asset', '$duration', '$remark', '$date', '$time', '$date', '$time')";
+        $sql = "INSERT INTO plc_changes2 (author, asset, duration, remark, date, time, date_of_log, time_of_log, log_date) VALUES ('$author', '$asset', '$duration', '$remark', '$date', '$time', '$date', '$time', '$logDate')";
         
         if ($conn->query($sql) === TRUE) {
             // echo "<h1>Article $title submitted successfully! Redirecting to articles page in 5 seconds.</h1>";

@@ -63,8 +63,11 @@
             return $remark;
         }
         $remark = addSpacingToRemark($remark);
+
+        $logDate = date('Y-m-d H:i:s');
         
-        $sql = "INSERT INTO safety_bypass_log2 (date_of_log, date, author, date_time_of_bypass, bypass_form_number, safe_work_permit_number, equipment_name, device_tag, estimated_bypass_renewal, estimated_bypass_removal_date_time, date_time_of_bypass_removal, remark, time) VALUES ('$dateOfLog', '$date', '$author', '$dateTimeOfBypass', '$bypassFormNumber', NULLIF('$safeWorkPermitNumber',''), '$equipmentName', '$deviceTag', '$estimatedBypassRenewal', '$estimatedBypassRemovalDateTime', '$dateTimeOfBypassRemoval', '$remark', '$time')";
+        $sql = "INSERT INTO safety_bypass_log2 (date_of_log, date, author, date_time_of_bypass, bypass_form_number, safe_work_permit_number, equipment_name, device_tag, estimated_bypass_renewal, estimated_bypass_removal_date_time, date_time_of_bypass_removal, remark, time, log_date) VALUES ('$dateOfLog', '$date', '$author', '$dateTimeOfBypass', '$bypassFormNumber', NULLIF('$safeWorkPermitNumber',''), '$equipmentName', '$deviceTag', '$estimatedBypassRenewal', '$estimatedBypassRemovalDateTime', '$dateTimeOfBypassRemoval', '$remark', '$time', '$logDate')";
+        
         
         if ($conn->query($sql) === TRUE) {
             // echo "<h1>Article $title submitted successfully! Redirecting to articles page in 5 seconds.</h1>";

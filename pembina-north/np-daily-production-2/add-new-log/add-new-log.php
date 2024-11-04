@@ -58,8 +58,7 @@
             $remark = str_replace(["\r", "\n"], "<p></p>", $remark);
             return $remark;
         }
-        $logDate = date('Y-m-d H:i:s');
-        $inlet = "";
+        $logDate = date('Y-m-d H:i:s');        
 
         $sql = "INSERT INTO np_daily_production2 (author, inlet, sales, lpg, oil, production_month, production_day, production_year, date, time, date_of_log, log_date) VALUES ('$author', NULLIF('$inlet',''), NULLIF('$sales',''), NULLIF('$lPG',''), NULLIF('$oil',''), '$productionMonth', NULLIF('$productionDay',''), NULLIF('$productionYear',''), '$date', '$time', '$dateOfLog', '$logDate')";
         

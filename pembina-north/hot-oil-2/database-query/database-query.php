@@ -67,7 +67,7 @@
                 
         echo    "<h1 class='showing-logs-display'>Showing logs between: $startDateTime and $endDateTime</h1>";        
 
-        $query = "  SELECT * FROM `plant_log2`                     
+        $query = "  SELECT * FROM `hot_oil2`                     
                     WHERE `log_date` BETWEEN STR_TO_DATE('$startDateTime', '%Y-%m-%d %H:%i') 
                     AND DATE_ADD(STR_TO_DATE('$endDateTime', '%Y-%m-%d %H:%i'), INTERVAL 1 DAY)                    
                     ORDER BY `new_id` DESC";
@@ -180,7 +180,7 @@
                 echo    "               </tr>";
                 echo    "           </tbody>";
                 echo    "       </table>";   
-                echo    "       <div>";   
+                echo    "       <div class='plant-log-remarks'>";   
                 echo    "           <p>$remark</p>";                
                 echo    "       </div>";                             
                 echo    "   </div>"; 

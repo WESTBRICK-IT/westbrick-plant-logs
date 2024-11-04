@@ -95,9 +95,7 @@
                 }                
                 $author = $row['author'];
                 $shift = $row['shift'];
-                // $operator1 = $row['operator1'];
-                // $operator2 = $row['operator2'];
-                // $operator3 = $row['operator3'];
+                
                 $shiftHandoverMeeting = $row['shift_handover_meeting'];
                 $startOfShiftMeeting = $row['start_of_shift_meeting'];
                 $plantStatus = $row['plant_status'];
@@ -125,9 +123,16 @@
                 $operators = $row['operators'];
                 $overRidesOrSafetiesBypassed = $row['overrides_or_safeties_bypassed'];
                 $amineConcentration = $row['amine_concentration'];
-                $amineBagFilterChanged = $row['amine_bag_filter_changed'];
+                $amineBagFilterChanged = $row['amine_bag_filter_changed'];                
                 $glycolRegenFilterChanged = $row['glycol_regen_filter_changed'];
+                $roustaboutUtilization = $row['roustabout_utilization'];
                 
+                
+                if($shift === '0' || $shift === '1'){
+                    $shift = booleanToNightDay($shift);
+                }                    
+                $glycolRegenFilterChanged = booleanToYesNoNA($glycolRegenFilterChanged);                
+                $amineBagFilterChanged = booleanToYesNoNA($amineBagFilterChanged);
                 $bermWaterSamplesTaken = booleanToYesNoNA($bermWaterSamplesTaken);
                 $plantProcessDiscussion = booleanToYesNoNA($plantProcessDiscussion);
                 $operationalTargets = booleanToYesNoNA($operationalTargets);

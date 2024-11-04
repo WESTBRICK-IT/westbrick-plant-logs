@@ -65,6 +65,7 @@
         $glycolRegenFilterChanged = $_POST['glycol-regen-filter-changed'];
         $category = $_POST['category'];
         $roustaboutUtilization = $_POST['roustabout-utilization'];
+        $amineConcentration = $_POST['amine-concentration'];
         $remark = $_POST['remark'];        
         $date = date('Y-m-d');        
         date_default_timezone_set('America/Denver'); 
@@ -78,8 +79,7 @@
         $remark = convertApostrophe($remark);
         $author = convertApostrophe($author);
         $shift = convertApostrophe($shift);
-        $shiftHandoverMeeting = convertApostrophe($shiftHandoverMeeting);
-        
+        $shiftHandoverMeeting = convertApostrophe($shiftHandoverMeeting);        
         function addSpacingToRemark($remark) {                      
             $remark = str_replace(["\r", "\n"], "<p></p>", $remark);
             return $remark;
@@ -88,7 +88,7 @@
         
         $logDate = date('Y-m-d H:i:s');
         
-        $sql = "INSERT INTO plant_log2 (author, shift, shift_handover_meeting, plant_status, equipment_outage, filter_change, pigging, recycle_pumps, production_tank_level, lpg_bullet_peak_level, lpg_bullet_peak_pressure, berm_water_samples_taken, plant_process_discussion, operational_targets, overrides_or_safeties_bypassed, upcoming_activities, hse_concerns, regulatory_requirements, staff_discussion, weather_and_effects_on_operations, permit_extensions_critical_tasks, remark, date, time, start_of_shift_meeting, amine_bag_filter_changed, glycol_regen_filter_changed, category, roustabout_utilization, operators, date_of_log, log_date) VALUES ('$author', NULLIF('$shift',''), '$shiftHandoverMeeting', '$plantStatus', '$equipmentOutage', '$filterChange', NULLIF('$pigging',''), '$recyclePumps', NULLIF('$productionTankLevel',''), NULLIF('$lPG_BulletPeakLevel',''), NULLIF('$lPG_BulletPeakPressure',''), NULLIF('$bermWaterSamplesTaken',''), NULLIF('$plantProcessDiscussion',''), NULLIF('$operationalTargets',''), NULLIF('$overRidesOrSafetiesBypassed',''), NULLIF('$upcomingActivities',''), NULLIF('$hSE_Concerns',''), NULLIF('$regulatoryRequirements',''), NULLIF('$staffDiscussion',''), NULLIF('$weatherAndEffectsOnOperations',''), '$permitExtensionsCriticalTasks', '$remark', '$date', '$time', '$startOfShiftMeeting', '$amineBagFilter_changed', '$glycolRegenFilterChanged', '$category', '$roustaboutUtilization', '$operators', '$dateOfLog', '$logDate')";
+        $sql = "INSERT INTO plant_log2 (author, shift, shift_handover_meeting, plant_status, equipment_outage, filter_change, pigging, recycle_pumps, amine_concentration, production_tank_level, lpg_bullet_peak_level, lpg_bullet_peak_pressure, berm_water_samples_taken, plant_process_discussion, operational_targets, overrides_or_safeties_bypassed, upcoming_activities, hse_concerns, regulatory_requirements, staff_discussion, weather_and_effects_on_operations, permit_extensions_critical_tasks, remark, date, time, start_of_shift_meeting, amine_bag_filter_changed, glycol_regen_filter_changed, category, roustabout_utilization, operators, date_of_log, log_date) VALUES ('$author', NULLIF('$shift',''), '$shiftHandoverMeeting', '$plantStatus', '$equipmentOutage', '$filterChange', NULLIF('$pigging',''), '$recyclePumps', NULLIF('$amineConcentration',''), NULLIF('$productionTankLevel',''), NULLIF('$lPG_BulletPeakLevel',''), NULLIF('$lPG_BulletPeakPressure',''), NULLIF('$bermWaterSamplesTaken',''), NULLIF('$plantProcessDiscussion',''), NULLIF('$operationalTargets',''), NULLIF('$overRidesOrSafetiesBypassed',''), NULLIF('$upcomingActivities',''), NULLIF('$hSE_Concerns',''), NULLIF('$regulatoryRequirements',''), NULLIF('$staffDiscussion',''), NULLIF('$weatherAndEffectsOnOperations',''), '$permitExtensionsCriticalTasks', '$remark', '$date', '$time', '$startOfShiftMeeting', '$amineBagFilterChanged', '$glycolRegenFilterChanged', '$category', '$roustaboutUtilization', '$operators', '$dateOfLog', '$logDate')";
         
         if ($conn->query($sql) === TRUE) {
             // echo "<h1>Article $title submitted successfully! Redirecting to articles page in 5 seconds.</h1>";
